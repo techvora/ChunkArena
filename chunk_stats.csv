@@ -1,0 +1,8 @@
+method,num_chunks,avg_words,std_words,min_words,max_words,median_words,boundary_ratio,collection_redundancy
+fixed_size,47,86.64,57.92,1,171,95.0,0.3404,0.5537
+overlapping,48,94.04,54.27,1,171,92.0,0.3333,0.5653
+sentence,55,74.02,17.64,36,117,74.0,0.9818,0.5597
+paragraph,56,69.55,83.39,1,400,39.5,0.5536,0.4642
+recursive,48,94.04,54.27,1,171,92.0,0.3333,0.5653
+header,32,123.47,145.48,2,709,67.5,0.5,0.5116
+semantic,10,407.1,364.71,53,1167,237.5,0.9,0.5979

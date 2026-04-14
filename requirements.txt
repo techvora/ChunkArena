@@ -1,0 +1,17 @@
+pdfplumber
+docling
+python-docx
+PyMuPDF
+
+faiss-cpu
+qdrant-client
+pymilvus
+
+# For semantic chunking
+langchain
+langchain-huggingface
+langchain-experimental
+sentence-transformers
+
+rank-bm25 
+openpyxl
