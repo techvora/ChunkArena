@@ -1,0 +1,281 @@
+method,technique,question_id,question,hit@k,mrr,precision@k,ndcg@k,recall@k,avg_rank,miss,redundancy,diversity,boundary,token_cost,latency_ms,context_relevance,faithfulness,answer_correctness
+fixed_size,dense,0,What does a bank do with deposits and loans?,1,0.3333,0.2,0.2346,1.0,3.0,0,0.7219,0.2781,0.2,861,7.298,0.6917,0.6059,0.589
+fixed_size,hybrid,0,What does a bank do with deposits and loans?,1,0.25,0.2,0.2021,1.0,4.0,0,0.7057,0.2943,0.2,845,12.372,0.6894,0.6201,0.589
+fixed_size,dense_rerank,0,What does a bank do with deposits and loans?,1,0.2,0.2,0.1815,1.0,5.0,0,0.7195,0.2805,0.2,899,1387.874,0.6813,0.6134,0.5869
+fixed_size,hybrid_rerank,0,What does a bank do with deposits and loans?,1,0.2,0.2,0.1815,1.0,5.0,0,0.7195,0.2805,0.2,899,1328.684,0.6813,0.6134,0.5869
+fixed_size,dense,1,What role do banks play in the economy?,1,1.0,0.2,0.6131,1.0,1.0,0,0.7001,0.2999,0.2,645,6.583,0.6478,0.5177,0.5452
+fixed_size,hybrid,1,What role do banks play in the economy?,1,1.0,0.2,0.6131,1.0,1.0,0,0.6341,0.3659,0.2,698,11.443,0.6245,0.4958,0.5397
+fixed_size,dense_rerank,1,What role do banks play in the economy?,1,1.0,0.2,0.6131,1.0,1.0,0,0.6669,0.3331,0.4,820,1360.383,0.6175,0.4877,0.5397
+fixed_size,hybrid_rerank,1,What role do banks play in the economy?,1,1.0,0.2,0.6131,1.0,1.0,0,0.6669,0.3331,0.4,820,1401.663,0.6175,0.4877,0.5397
+fixed_size,dense,2,What regulatory requirements are banks subject to?,0,0.0,0.0,0.0,0.0,,1,0.6899,0.3101,0.4,774,5.997,0.6713,0.4338,0.4499
+fixed_size,hybrid,2,What regulatory requirements are banks subject to?,1,1.0,0.2,0.4693,1.0,1.0,0,0.6775,0.3225,0.4,754,11.955,0.6673,0.4449,0.4503
+fixed_size,dense_rerank,2,What regulatory requirements are banks subject to?,1,0.3333,0.2,0.2346,1.0,3.0,0,0.7306,0.2694,0.2,712,1466.844,0.661,0.4615,0.4503
+fixed_size,hybrid_rerank,2,What regulatory requirements are banks subject to?,1,0.3333,0.2,0.2346,1.0,3.0,0,0.7306,0.2694,0.2,712,1410.32,0.661,0.4615,0.4503
+fixed_size,dense,3,How do banks handle customer payments?,1,1.0,0.2,0.4693,0.6667,1.0,0,0.7367,0.2633,0.2,838,5.174,0.6753,0.5939,0.5707
+fixed_size,hybrid,3,How do banks handle customer payments?,1,1.0,0.2,0.4693,0.6667,1.0,0,0.7221,0.2779,0.2,784,9.675,0.673,0.599,0.5707
+fixed_size,dense_rerank,3,How do banks handle customer payments?,1,1.0,0.2,0.4693,0.6667,1.0,0,0.7095,0.2905,0.4,672,1362.846,0.6698,0.624,0.5707
+fixed_size,hybrid_rerank,3,How do banks handle customer payments?,1,1.0,0.2,0.4693,0.6667,1.0,0,0.7095,0.2905,0.4,672,1366.407,0.6698,0.624,0.5707
+fixed_size,dense,4,How is money created in banking systems?,1,1.0,0.2,0.4693,1.0,1.0,0,0.7424,0.2576,0.2,915,4.934,0.6606,0.5665,0.5202
+fixed_size,hybrid,4,How is money created in banking systems?,1,1.0,0.2,0.4693,1.0,1.0,0,0.6619,0.3381,0.2,870,9.312,0.6281,0.5518,0.5052
+fixed_size,dense_rerank,4,How is money created in banking systems?,1,1.0,0.2,0.4693,1.0,1.0,0,0.6464,0.3536,0.4,776,1341.077,0.6304,0.5533,0.5052
+fixed_size,hybrid_rerank,4,How is money created in banking systems?,1,1.0,0.2,0.4693,1.0,1.0,0,0.6464,0.3536,0.4,776,1317.805,0.6304,0.5533,0.5052
+fixed_size,dense,5,How do banks earn profit from lending?,1,1.0,0.2,0.6131,0.5,1.0,0,0.6889,0.3111,0.2,686,4.831,0.6596,0.5082,0.5367
+fixed_size,hybrid,5,How do banks earn profit from lending?,1,1.0,0.2,0.6131,0.5,1.0,0,0.6889,0.3111,0.2,686,9.192,0.6596,0.5082,0.5367
+fixed_size,dense_rerank,5,How do banks earn profit from lending?,1,1.0,0.2,0.6131,0.5,1.0,0,0.695,0.305,0.4,730,1366.95,0.6482,0.5144,0.5367
+fixed_size,hybrid_rerank,5,How do banks earn profit from lending?,1,1.0,0.2,0.6131,0.5,1.0,0,0.695,0.305,0.4,730,1362.743,0.6482,0.5144,0.5367
+fixed_size,dense,6,What conditions define liquidity risk in banking?,1,1.0,0.2,0.6131,1.0,1.0,0,0.6858,0.3142,0.2,764,5.843,0.5874,0.4839,0.5768
+fixed_size,hybrid,6,What conditions define liquidity risk in banking?,1,1.0,0.2,0.6131,1.0,1.0,0,0.6884,0.3116,0.2,798,11.055,0.5861,0.4895,0.5768
+fixed_size,dense_rerank,6,What conditions define liquidity risk in banking?,1,1.0,0.2,0.6131,1.0,1.0,0,0.6884,0.3116,0.2,798,1315.581,0.5861,0.4895,0.5768
+fixed_size,hybrid_rerank,6,What conditions define liquidity risk in banking?,1,1.0,0.2,0.6131,1.0,1.0,0,0.6884,0.3116,0.2,798,1081.163,0.5861,0.4895,0.5768
+fixed_size,dense,7,What components form bank capital?,1,1.0,0.2,0.4693,1.0,1.0,0,0.7188,0.2812,0.2,859,5.377,0.5735,0.3576,0.4332
+fixed_size,hybrid,7,What components form bank capital?,1,1.0,0.2,0.4693,1.0,1.0,0,0.6857,0.3143,0.2,968,10.321,0.564,0.3674,0.4374
+fixed_size,dense_rerank,7,What components form bank capital?,1,1.0,0.2,0.4693,1.0,1.0,0,0.6596,0.3404,0.6,858,1311.097,0.5497,0.3404,0.4332
+fixed_size,hybrid_rerank,7,What components form bank capital?,1,1.0,0.2,0.4693,1.0,1.0,0,0.6596,0.3404,0.6,858,1304.264,0.5497,0.3404,0.4332
+fixed_size,dense,8,Where did modern banking evolve?,1,0.2,0.2,0.1815,1.0,5.0,0,0.6622,0.3378,0.6,839,5.587,0.5816,0.3869,0.4104
+fixed_size,hybrid,8,Where did modern banking evolve?,1,0.25,0.2,0.2021,1.0,4.0,0,0.6085,0.3915,0.4,829,10.057,0.5638,0.3408,0.3916
+fixed_size,dense_rerank,8,Where did modern banking evolve?,0,0.0,0.0,0.0,0.0,,1,0.589,0.411,0.8,665,1319.061,0.5662,0.3564,0.396
+fixed_size,hybrid_rerank,8,Where did modern banking evolve?,0,0.0,0.0,0.0,0.0,,1,0.589,0.411,0.8,665,1321.949,0.5662,0.3564,0.396
+fixed_size,dense,9,What types of bank accounts are mentioned?,1,1.0,0.4,0.7654,1.0,1.0,0,0.6729,0.3271,0.2,890,5.11,0.6659,0.488,0.5374
+fixed_size,hybrid,9,What types of bank accounts are mentioned?,1,1.0,0.4,0.7654,1.0,1.0,0,0.6248,0.3752,0.2,810,9.948,0.6312,0.4834,0.5374
+fixed_size,dense_rerank,9,What types of bank accounts are mentioned?,1,1.0,0.4,0.6714,1.0,1.0,0,0.651,0.349,0.2,740,1371.958,0.6427,0.5009,0.5374
+fixed_size,hybrid_rerank,9,What types of bank accounts are mentioned?,1,1.0,0.4,0.6714,1.0,1.0,0,0.651,0.349,0.2,740,1873.326,0.6427,0.5009,0.5374
+overlapping,dense,0,What does a bank do with deposits and loans?,1,0.3333,0.2,0.2346,1.0,3.0,0,0.7219,0.2781,0.2,861,6.892,0.6917,0.6059,0.589
+overlapping,hybrid,0,What does a bank do with deposits and loans?,1,0.25,0.2,0.2021,1.0,4.0,0,0.7057,0.2943,0.2,845,12.917,0.6894,0.6201,0.589
+overlapping,dense_rerank,0,What does a bank do with deposits and loans?,1,0.2,0.2,0.1815,1.0,5.0,0,0.7195,0.2805,0.2,899,1863.475,0.6813,0.6134,0.5869
+overlapping,hybrid_rerank,0,What does a bank do with deposits and loans?,1,0.2,0.2,0.1815,1.0,5.0,0,0.7195,0.2805,0.2,899,1718.1,0.6813,0.6134,0.5869
+overlapping,dense,1,What role do banks play in the economy?,1,1.0,0.2,0.6131,1.0,1.0,0,0.7222,0.2778,0.2,824,7.578,0.6477,0.5061,0.5397
+overlapping,hybrid,1,What role do banks play in the economy?,1,1.0,0.2,0.6131,1.0,1.0,0,0.6227,0.3773,0.4,707,14.393,0.6181,0.5046,0.5397
+overlapping,dense_rerank,1,What role do banks play in the economy?,1,1.0,0.2,0.6131,1.0,1.0,0,0.6844,0.3156,0.2,778,1675.964,0.6073,0.4896,0.5397
+overlapping,hybrid_rerank,1,What role do banks play in the economy?,1,1.0,0.2,0.6131,1.0,1.0,0,0.6844,0.3156,0.2,778,1707.203,0.6073,0.4896,0.5397
+overlapping,dense,2,What regulatory requirements are banks subject to?,0,0.0,0.0,0.0,0.0,,1,0.6605,0.3395,0.4,871,7.305,0.6664,0.4316,0.4499
+overlapping,hybrid,2,What regulatory requirements are banks subject to?,1,0.3333,0.2,0.2346,1.0,3.0,0,0.6569,0.3431,0.4,847,14.636,0.6559,0.4395,0.4503
+overlapping,dense_rerank,2,What regulatory requirements are banks subject to?,1,0.5,0.2,0.2961,1.0,2.0,0,0.7096,0.2904,0.2,769,1632.453,0.6536,0.4661,0.4503
+overlapping,hybrid_rerank,2,What regulatory requirements are banks subject to?,1,0.5,0.2,0.2961,1.0,2.0,0,0.7096,0.2904,0.2,769,1729.5,0.6536,0.4661,0.4503
+overlapping,dense,3,How do banks handle customer payments?,1,1.0,0.2,0.4693,0.6667,1.0,0,0.7124,0.2876,0.2,842,7.012,0.6742,0.6122,0.5707
+overlapping,hybrid,3,How do banks handle customer payments?,1,1.0,0.2,0.4693,0.6667,1.0,0,0.7055,0.2945,0.2,809,13.128,0.6689,0.5934,0.5707
+overlapping,dense_rerank,3,How do banks handle customer payments?,1,1.0,0.2,0.4693,0.6667,1.0,0,0.6999,0.3001,0.2,721,1651.754,0.6587,0.6009,0.5707
+overlapping,hybrid_rerank,3,How do banks handle customer payments?,1,1.0,0.2,0.4693,0.6667,1.0,0,0.6999,0.3001,0.2,721,1661.531,0.6587,0.6009,0.5707
+overlapping,dense,4,How is money created in banking systems?,1,1.0,0.2,0.4693,1.0,1.0,0,0.7424,0.2576,0.2,915,7.131,0.6606,0.5665,0.5202
+overlapping,hybrid,4,How is money created in banking systems?,1,1.0,0.2,0.4693,1.0,1.0,0,0.6174,0.3826,0.4,933,14.53,0.6104,0.5494,0.5133
+overlapping,dense_rerank,4,How is money created in banking systems?,1,1.0,0.2,0.4693,1.0,1.0,0,0.6346,0.3654,0.6,770,1641.854,0.6126,0.5427,0.5052
+overlapping,hybrid_rerank,4,How is money created in banking systems?,1,1.0,0.2,0.4693,1.0,1.0,0,0.6346,0.3654,0.6,770,1660.29,0.6126,0.5427,0.5052
+overlapping,dense,5,How do banks earn profit from lending?,1,1.0,0.2,0.6131,0.5,1.0,0,0.707,0.293,0.2,890,7.412,0.6575,0.5216,0.5367
+overlapping,hybrid,5,How do banks earn profit from lending?,1,1.0,0.2,0.6131,0.5,1.0,0,0.6777,0.3223,0.2,743,14.277,0.6561,0.502,0.5367
+overlapping,dense_rerank,5,How do banks earn profit from lending?,1,1.0,0.2,0.6131,0.5,1.0,0,0.7019,0.2981,0.4,762,1610.171,0.6445,0.5089,0.5367
+overlapping,hybrid_rerank,5,How do banks earn profit from lending?,1,1.0,0.2,0.6131,0.5,1.0,0,0.7019,0.2981,0.4,762,1666.55,0.6445,0.5089,0.5367
+overlapping,dense,6,What conditions define liquidity risk in banking?,1,1.0,0.2,0.6131,1.0,1.0,0,0.6937,0.3063,0.2,940,7.679,0.5875,0.4925,0.5768
+overlapping,hybrid,6,What conditions define liquidity risk in banking?,1,1.0,0.2,0.6131,1.0,1.0,0,0.6759,0.3241,0.4,843,14.608,0.5812,0.4952,0.5768
+overlapping,dense_rerank,6,What conditions define liquidity risk in banking?,1,1.0,0.2,0.6131,1.0,1.0,0,0.6696,0.3304,0.6,793,1624.833,0.5774,0.4977,0.5768
+overlapping,hybrid_rerank,6,What conditions define liquidity risk in banking?,1,1.0,0.2,0.6131,1.0,1.0,0,0.6696,0.3304,0.6,793,1233.246,0.5774,0.4977,0.5768
+overlapping,dense,7,What components form bank capital?,1,1.0,0.2,0.4693,1.0,1.0,0,0.6935,0.3065,0.4,881,7.456,0.5713,0.3417,0.4332
+overlapping,hybrid,7,What components form bank capital?,1,1.0,0.2,0.4693,1.0,1.0,0,0.6775,0.3225,0.4,928,14.455,0.5659,0.3527,0.4374
+overlapping,dense_rerank,7,What components form bank capital?,1,1.0,0.2,0.4693,1.0,1.0,0,0.6295,0.3705,0.6,795,1569.944,0.5521,0.3552,0.4332
+overlapping,hybrid_rerank,7,What components form bank capital?,1,1.0,0.2,0.4693,1.0,1.0,0,0.6295,0.3705,0.6,795,1646.714,0.5521,0.3552,0.4332
+overlapping,dense,8,Where did modern banking evolve?,1,1.0,0.4,0.6508,1.0,1.0,0,0.671,0.329,0.6,878,7.647,0.5962,0.3991,0.4104
+overlapping,hybrid,8,Where did modern banking evolve?,1,1.0,0.4,0.6508,1.0,1.0,0,0.6454,0.3546,0.6,852,13.96,0.5888,0.3601,0.4035
+overlapping,dense_rerank,8,Where did modern banking evolve?,1,1.0,0.2,0.4693,1.0,1.0,0,0.601,0.399,0.8,739,1584.954,0.5755,0.369,0.4143
+overlapping,hybrid_rerank,8,Where did modern banking evolve?,1,1.0,0.2,0.4693,1.0,1.0,0,0.601,0.399,0.8,739,1609.807,0.5755,0.369,0.4143
+overlapping,dense,9,What types of bank accounts are mentioned?,1,1.0,0.4,0.6508,1.0,1.0,0,0.6838,0.3162,0.2,871,6.842,0.6751,0.4848,0.5143
+overlapping,hybrid,9,What types of bank accounts are mentioned?,1,1.0,0.6,0.9675,1.0,1.0,0,0.6603,0.3397,0.2,860,13.147,0.6617,0.4802,0.5226
+overlapping,dense_rerank,9,What types of bank accounts are mentioned?,1,1.0,0.6,0.9469,1.0,1.0,0,0.6806,0.3194,0.2,851,1610.616,0.6667,0.4919,0.5226
+overlapping,hybrid_rerank,9,What types of bank accounts are mentioned?,1,1.0,0.6,0.9469,1.0,1.0,0,0.6806,0.3194,0.2,851,1642.078,0.6667,0.4919,0.5226
+sentence,dense,0,What does a bank do with deposits and loans?,1,0.25,0.2,0.2021,1.0,4.0,0,0.7349,0.2651,1.0,735,7.069,0.6909,0.6318,0.6052
+sentence,hybrid,0,What does a bank do with deposits and loans?,1,0.2,0.2,0.1815,1.0,5.0,0,0.6943,0.3057,1.0,690,13.628,0.6769,0.6276,0.599
+sentence,dense_rerank,0,What does a bank do with deposits and loans?,0,0.0,0.0,0.0,0.0,,1,0.7083,0.2917,1.0,473,2201.014,0.6786,0.6246,0.6052
+sentence,hybrid_rerank,0,What does a bank do with deposits and loans?,0,0.0,0.0,0.0,0.0,,1,0.7083,0.2917,1.0,473,2032.542,0.6786,0.6246,0.6052
+sentence,dense,1,What role do banks play in the economy?,1,1.0,0.2,0.6131,1.0,1.0,0,0.6833,0.3167,1.0,653,7.181,0.6371,0.5043,0.5353
+sentence,hybrid,1,What role do banks play in the economy?,1,1.0,0.2,0.6131,1.0,1.0,0,0.6122,0.3878,1.0,669,13.281,0.6158,0.4976,0.5353
+sentence,dense_rerank,1,What role do banks play in the economy?,1,0.2,0.2,0.2372,1.0,5.0,0,0.6579,0.3421,1.0,588,1792.335,0.6156,0.5174,0.5353
+sentence,hybrid_rerank,1,What role do banks play in the economy?,1,0.2,0.2,0.2372,1.0,5.0,0,0.6579,0.3421,1.0,588,1852.272,0.6156,0.5174,0.5353
+sentence,dense,2,What regulatory requirements are banks subject to?,0,0.0,0.0,0.0,0.0,,1,0.6744,0.3256,1.0,1458,7.327,0.6582,0.4137,0.4125
+sentence,hybrid,2,What regulatory requirements are banks subject to?,1,0.3333,0.2,0.2346,1.0,3.0,0,0.603,0.397,1.0,918,14.069,0.6216,0.4534,0.4811
+sentence,dense_rerank,2,What regulatory requirements are banks subject to?,1,1.0,0.2,0.4693,1.0,1.0,0,0.6255,0.3745,1.0,482,1928.443,0.6308,0.4625,0.4811
+sentence,hybrid_rerank,2,What regulatory requirements are banks subject to?,1,1.0,0.2,0.4693,1.0,1.0,0,0.6255,0.3745,1.0,482,1731.659,0.6308,0.4625,0.4811
+sentence,dense,3,How do banks handle customer payments?,1,1.0,0.2,0.4693,0.6667,1.0,0,0.741,0.259,1.0,776,6.794,0.6709,0.5966,0.5776
+sentence,hybrid,3,How do banks handle customer payments?,1,1.0,0.2,0.4693,0.6667,1.0,0,0.6678,0.3322,1.0,1153,13.532,0.6394,0.578,0.5776
+sentence,dense_rerank,3,How do banks handle customer payments?,1,1.0,0.2,0.4693,0.6667,1.0,0,0.6885,0.3115,1.0,479,1643.321,0.6522,0.5981,0.5776
+sentence,hybrid_rerank,3,How do banks handle customer payments?,1,1.0,0.2,0.4693,0.6667,1.0,0,0.6885,0.3115,1.0,479,1595.858,0.6522,0.5981,0.5776
+sentence,dense,4,How is money created in banking systems?,1,1.0,0.2,0.4693,1.0,1.0,0,0.7355,0.2645,1.0,587,7.315,0.6664,0.5814,0.5846
+sentence,hybrid,4,How is money created in banking systems?,1,1.0,0.2,0.4693,1.0,1.0,0,0.6491,0.3509,1.0,952,13.933,0.6364,0.583,0.582
+sentence,dense_rerank,4,How is money created in banking systems?,1,1.0,0.2,0.4693,1.0,1.0,0,0.6396,0.3604,1.0,567,1503.379,0.6357,0.5902,0.582
+sentence,hybrid_rerank,4,How is money created in banking systems?,1,1.0,0.2,0.4693,1.0,1.0,0,0.6396,0.3604,1.0,567,1727.003,0.6357,0.5902,0.582
+sentence,dense,5,How do banks earn profit from lending?,1,1.0,0.2,0.6131,0.5,1.0,0,0.6988,0.3012,1.0,526,5.646,0.6684,0.5486,0.6042
+sentence,hybrid,5,How do banks earn profit from lending?,1,1.0,0.2,0.6131,0.5,1.0,0,0.6988,0.3012,1.0,526,10.908,0.6684,0.5486,0.6042
+sentence,dense_rerank,5,How do banks earn profit from lending?,1,0.5,0.2,0.3869,0.5,2.0,0,0.7006,0.2994,1.0,457,1690.116,0.6683,0.5389,0.6042
+sentence,hybrid_rerank,5,How do banks earn profit from lending?,1,0.5,0.2,0.3869,0.5,2.0,0,0.7006,0.2994,1.0,457,1686.963,0.6683,0.5389,0.6042
+sentence,dense,6,What conditions define liquidity risk in banking?,1,1.0,0.2,0.6131,1.0,1.0,0,0.641,0.359,1.0,1016,5.307,0.5833,0.4878,0.577
+sentence,hybrid,6,What conditions define liquidity risk in banking?,1,1.0,0.2,0.6131,1.0,1.0,0,0.6262,0.3738,1.0,1048,11.631,0.58,0.4973,0.577
+sentence,dense_rerank,6,What conditions define liquidity risk in banking?,1,1.0,0.2,0.6131,1.0,1.0,0,0.6121,0.3879,1.0,494,1467.098,0.5635,0.5042,0.577
+sentence,hybrid_rerank,6,What conditions define liquidity risk in banking?,1,1.0,0.2,0.6131,1.0,1.0,0,0.6121,0.3879,1.0,494,1695.79,0.5635,0.5042,0.577
+sentence,dense,7,What components form bank capital?,1,1.0,0.2,0.4693,1.0,1.0,0,0.6477,0.3523,1.0,1065,6.218,0.5602,0.358,0.4193
+sentence,hybrid,7,What components form bank capital?,1,1.0,0.2,0.4693,1.0,1.0,0,0.6497,0.3503,1.0,1060,12.472,0.5583,0.376,0.4213
+sentence,dense_rerank,7,What components form bank capital?,1,0.5,0.2,0.2961,1.0,2.0,0,0.6139,0.3861,1.0,919,1710.666,0.551,0.3765,0.4239
+sentence,hybrid_rerank,7,What components form bank capital?,1,0.5,0.2,0.2961,1.0,2.0,0,0.6139,0.3861,1.0,919,1469.739,0.551,0.3765,0.4239
+sentence,dense,8,Where did modern banking evolve?,1,1.0,0.2,0.4693,1.0,1.0,0,0.6516,0.3484,1.0,721,4.376,0.5921,0.3928,0.4205
+sentence,hybrid,8,Where did modern banking evolve?,1,1.0,0.2,0.4693,1.0,1.0,0,0.6047,0.3953,1.0,550,8.569,0.5887,0.3692,0.4125
+sentence,dense_rerank,8,Where did modern banking evolve?,1,1.0,0.2,0.4693,1.0,1.0,0,0.6499,0.3501,1.0,597,1764.76,0.5905,0.4016,0.4205
+sentence,hybrid_rerank,8,Where did modern banking evolve?,1,1.0,0.2,0.4693,1.0,1.0,0,0.6499,0.3501,1.0,597,1741.623,0.5905,0.4016,0.4205
+sentence,dense,9,What types of bank accounts are mentioned?,1,1.0,0.6,1.0,1.0,1.0,0,0.6995,0.3005,1.0,1024,5.75,0.6816,0.5008,0.5334
+sentence,hybrid,9,What types of bank accounts are mentioned?,1,1.0,0.8,1.1815,1.0,1.0,0,0.6847,0.3153,1.0,889,12.211,0.6687,0.4954,0.5309
+sentence,dense_rerank,9,What types of bank accounts are mentioned?,1,1.0,0.8,1.2021,1.0,1.0,0,0.698,0.302,1.0,969,1689.688,0.6743,0.5135,0.5309
+sentence,hybrid_rerank,9,What types of bank accounts are mentioned?,1,1.0,0.8,1.2021,1.0,1.0,0,0.698,0.302,1.0,969,1715.663,0.6743,0.5135,0.5309
+paragraph,dense,0,What does a bank do with deposits and loans?,1,0.25,0.2,0.2021,1.0,4.0,0,0.6975,0.3025,1.0,653,5.373,0.6847,0.6234,0.6196
+paragraph,hybrid,0,What does a bank do with deposits and loans?,0,0.0,0.0,0.0,0.0,,1,0.6832,0.3168,1.0,771,11.12,0.6633,0.6474,0.6207
+paragraph,dense_rerank,0,What does a bank do with deposits and loans?,1,0.2,0.2,0.1815,1.0,5.0,0,0.7199,0.2801,0.8,922,1493.448,0.6715,0.6334,0.6207
+paragraph,hybrid_rerank,0,What does a bank do with deposits and loans?,1,0.2,0.2,0.1815,1.0,5.0,0,0.7199,0.2801,0.8,922,1336.816,0.6715,0.6334,0.6207
+paragraph,dense,1,What role do banks play in the economy?,1,1.0,0.2,0.6131,1.0,1.0,0,0.6513,0.3487,0.6,1189,5.128,0.6217,0.5004,0.5168
+paragraph,hybrid,1,What role do banks play in the economy?,1,1.0,0.2,0.6131,1.0,1.0,0,0.6489,0.3511,0.6,1368,9.312,0.6053,0.4932,0.5168
+paragraph,dense_rerank,1,What role do banks play in the economy?,1,1.0,0.2,0.6131,1.0,1.0,0,0.7012,0.2988,0.8,692,1484.328,0.6031,0.4615,0.5168
+paragraph,hybrid_rerank,1,What role do banks play in the economy?,1,1.0,0.2,0.6131,1.0,1.0,0,0.7012,0.2988,0.8,692,1489.558,0.6031,0.4615,0.5168
+paragraph,dense,2,What regulatory requirements are banks subject to?,0,0.0,0.0,0.0,0.0,,1,0.6743,0.3257,0.6,1073,5.552,0.6728,0.4593,0.448
+paragraph,hybrid,2,What regulatory requirements are banks subject to?,1,0.5,0.2,0.2961,1.0,2.0,0,0.6665,0.3335,0.6,1315,10.292,0.6725,0.4493,0.448
+paragraph,dense_rerank,2,What regulatory requirements are banks subject to?,1,0.25,0.2,0.2021,1.0,4.0,0,0.6627,0.3373,1.0,657,1411.515,0.6405,0.448,0.4427
+paragraph,hybrid_rerank,2,What regulatory requirements are banks subject to?,1,0.25,0.2,0.2021,1.0,4.0,0,0.6627,0.3373,1.0,657,1440.758,0.6405,0.448,0.4427
+paragraph,dense,3,How do banks handle customer payments?,1,1.0,0.2,0.4693,0.6667,1.0,0,0.6967,0.3033,0.8,495,4.659,0.6758,0.6227,0.5916
+paragraph,hybrid,3,How do banks handle customer payments?,1,1.0,0.2,0.4693,0.6667,1.0,0,0.6728,0.3272,0.8,585,9.652,0.6583,0.5952,0.5916
+paragraph,dense_rerank,3,How do banks handle customer payments?,1,1.0,0.2,0.4693,0.6667,1.0,0,0.6967,0.3033,0.8,495,1377.916,0.6758,0.6227,0.5916
+paragraph,hybrid_rerank,3,How do banks handle customer payments?,1,1.0,0.2,0.4693,0.6667,1.0,0,0.6967,0.3033,0.8,495,1284.862,0.6758,0.6227,0.5916
+paragraph,dense,4,How is money created in banking systems?,1,1.0,0.2,0.4693,1.0,1.0,0,0.7219,0.2781,0.8,743,5.236,0.6721,0.5878,0.5834
+paragraph,hybrid,4,How is money created in banking systems?,1,1.0,0.2,0.4693,1.0,1.0,0,0.6865,0.3135,1.0,837,10.955,0.6446,0.606,0.5813
+paragraph,dense_rerank,4,How is money created in banking systems?,1,1.0,0.2,0.4693,1.0,1.0,0,0.6996,0.3004,0.8,934,1429.881,0.6675,0.607,0.5813
+paragraph,hybrid_rerank,4,How is money created in banking systems?,1,1.0,0.2,0.4693,1.0,1.0,0,0.6996,0.3004,0.8,934,1339.212,0.6675,0.607,0.5813
+paragraph,dense,5,How do banks earn profit from lending?,1,1.0,0.2,0.6131,0.5,1.0,0,0.7276,0.2724,0.6,938,4.87,0.6742,0.5289,0.5296
+paragraph,hybrid,5,How do banks earn profit from lending?,1,1.0,0.2,0.6131,0.5,1.0,0,0.7164,0.2836,0.8,851,12.152,0.6677,0.5339,0.5296
+paragraph,dense_rerank,5,How do banks earn profit from lending?,1,1.0,0.2,0.6131,0.5,1.0,0,0.7164,0.2836,0.8,851,1428.78,0.6677,0.5339,0.5296
+paragraph,hybrid_rerank,5,How do banks earn profit from lending?,1,1.0,0.2,0.6131,0.5,1.0,0,0.7164,0.2836,0.8,851,1308.652,0.6677,0.5339,0.5296
+paragraph,dense,6,What conditions define liquidity risk in banking?,1,1.0,0.2,0.6131,1.0,1.0,0,0.6855,0.3145,0.8,1042,5.462,0.5755,0.4962,0.5708
+paragraph,hybrid,6,What conditions define liquidity risk in banking?,1,1.0,0.2,0.6131,1.0,1.0,0,0.655,0.345,1.0,1252,11.182,0.5618,0.4737,0.5695
+paragraph,dense_rerank,6,What conditions define liquidity risk in banking?,1,1.0,0.2,0.6131,1.0,1.0,0,0.6588,0.3412,1.0,871,1444.577,0.5604,0.4844,0.5708
+paragraph,hybrid_rerank,6,What conditions define liquidity risk in banking?,1,1.0,0.2,0.6131,1.0,1.0,0,0.6588,0.3412,1.0,871,1301.313,0.5604,0.4844,0.5708
+paragraph,dense,7,What components form bank capital?,1,1.0,0.2,0.4693,1.0,1.0,0,0.6711,0.3289,0.6,1313,4.734,0.5567,0.3595,0.4369
+paragraph,hybrid,7,What components form bank capital?,1,1.0,0.2,0.4693,1.0,1.0,0,0.6708,0.3292,0.6,1210,9.177,0.5534,0.3555,0.4287
+paragraph,dense_rerank,7,What components form bank capital?,1,1.0,0.2,0.4693,1.0,1.0,0,0.6826,0.3174,0.8,800,1424.78,0.5478,0.3582,0.4279
+paragraph,hybrid_rerank,7,What components form bank capital?,1,1.0,0.2,0.4693,1.0,1.0,0,0.6826,0.3174,0.8,800,1354.861,0.5478,0.3582,0.4279
+paragraph,dense,8,Where did modern banking evolve?,1,1.0,0.2,0.4693,1.0,1.0,0,0.5855,0.4145,1.0,924,5.811,0.5664,0.3508,0.4022
+paragraph,hybrid,8,Where did modern banking evolve?,1,1.0,0.2,0.4693,1.0,1.0,0,0.5834,0.4166,1.0,1072,10.894,0.5532,0.3395,0.4082
+paragraph,dense_rerank,8,Where did modern banking evolve?,1,0.2,0.2,0.1815,1.0,5.0,0,0.5741,0.4259,1.0,918,1304.729,0.5534,0.343,0.404
+paragraph,hybrid_rerank,8,Where did modern banking evolve?,1,0.2,0.2,0.1815,1.0,5.0,0,0.5741,0.4259,1.0,918,1467.726,0.5534,0.343,0.404
+paragraph,dense,9,What types of bank accounts are mentioned?,1,0.3333,0.4,0.4367,1.0,3.0,0,0.6708,0.3292,0.8,412,5.682,0.6211,0.4622,0.5028
+paragraph,hybrid,9,What types of bank accounts are mentioned?,1,1.0,0.8,1.0876,1.0,1.0,0,0.6343,0.3657,1.0,474,10.655,0.5906,0.4859,0.5028
+paragraph,dense_rerank,9,What types of bank accounts are mentioned?,1,0.5,0.4,0.4982,0.3333,2.0,0,0.6557,0.3443,1.0,257,1419.718,0.6144,0.4741,0.49
+paragraph,hybrid_rerank,9,What types of bank accounts are mentioned?,1,0.5,0.4,0.4982,0.3333,2.0,0,0.6557,0.3443,1.0,257,1374.686,0.6144,0.4741,0.49
+recursive,dense,0,What does a bank do with deposits and loans?,1,0.3333,0.2,0.2346,1.0,3.0,0,0.7219,0.2781,0.2,861,6.169,0.6917,0.6059,0.589
+recursive,hybrid,0,What does a bank do with deposits and loans?,1,0.25,0.2,0.2021,1.0,4.0,0,0.7057,0.2943,0.2,845,11.771,0.6894,0.6201,0.589
+recursive,dense_rerank,0,What does a bank do with deposits and loans?,1,0.2,0.2,0.1815,1.0,5.0,0,0.7195,0.2805,0.2,899,6.174,0.6813,0.6134,0.5869
+recursive,hybrid_rerank,0,What does a bank do with deposits and loans?,1,0.2,0.2,0.1815,1.0,5.0,0,0.7195,0.2805,0.2,899,11.774,0.6813,0.6134,0.5869
+recursive,dense,1,What role do banks play in the economy?,1,1.0,0.2,0.6131,1.0,1.0,0,0.7222,0.2778,0.2,824,4.967,0.6477,0.5061,0.5397
+recursive,hybrid,1,What role do banks play in the economy?,1,1.0,0.2,0.6131,1.0,1.0,0,0.6227,0.3773,0.4,707,10.208,0.6181,0.5046,0.5397
+recursive,dense_rerank,1,What role do banks play in the economy?,1,1.0,0.2,0.6131,1.0,1.0,0,0.6844,0.3156,0.2,778,4.972,0.6073,0.4896,0.5397
+recursive,hybrid_rerank,1,What role do banks play in the economy?,1,1.0,0.2,0.6131,1.0,1.0,0,0.6844,0.3156,0.2,778,10.21,0.6073,0.4896,0.5397
+recursive,dense,2,What regulatory requirements are banks subject to?,0,0.0,0.0,0.0,0.0,,1,0.6605,0.3395,0.4,871,5.187,0.6664,0.4316,0.4499
+recursive,hybrid,2,What regulatory requirements are banks subject to?,1,0.3333,0.2,0.2346,1.0,3.0,0,0.6569,0.3431,0.4,847,9.551,0.6559,0.4395,0.4503
+recursive,dense_rerank,2,What regulatory requirements are banks subject to?,1,0.5,0.2,0.2961,1.0,2.0,0,0.7096,0.2904,0.2,769,5.192,0.6536,0.4661,0.4503
+recursive,hybrid_rerank,2,What regulatory requirements are banks subject to?,1,0.5,0.2,0.2961,1.0,2.0,0,0.7096,0.2904,0.2,769,9.552,0.6536,0.4661,0.4503
+recursive,dense,3,How do banks handle customer payments?,1,1.0,0.2,0.4693,0.6667,1.0,0,0.7124,0.2876,0.2,842,5.374,0.6742,0.6122,0.5707
+recursive,hybrid,3,How do banks handle customer payments?,1,1.0,0.2,0.4693,0.6667,1.0,0,0.7055,0.2945,0.2,809,11.104,0.6689,0.5934,0.5707
+recursive,dense_rerank,3,How do banks handle customer payments?,1,1.0,0.2,0.4693,0.6667,1.0,0,0.6999,0.3001,0.2,721,5.38,0.6587,0.6009,0.5707
+recursive,hybrid_rerank,3,How do banks handle customer payments?,1,1.0,0.2,0.4693,0.6667,1.0,0,0.6999,0.3001,0.2,721,11.105,0.6587,0.6009,0.5707
+recursive,dense,4,How is money created in banking systems?,1,1.0,0.2,0.4693,1.0,1.0,0,0.7424,0.2576,0.2,915,4.668,0.6606,0.5665,0.5202
+recursive,hybrid,4,How is money created in banking systems?,1,1.0,0.2,0.4693,1.0,1.0,0,0.6174,0.3826,0.4,933,10.003,0.6104,0.5494,0.5133
+recursive,dense_rerank,4,How is money created in banking systems?,1,1.0,0.2,0.4693,1.0,1.0,0,0.6346,0.3654,0.6,770,4.674,0.6126,0.5427,0.5052
+recursive,hybrid_rerank,4,How is money created in banking systems?,1,1.0,0.2,0.4693,1.0,1.0,0,0.6346,0.3654,0.6,770,10.005,0.6126,0.5427,0.5052
+recursive,dense,5,How do banks earn profit from lending?,1,1.0,0.2,0.6131,0.5,1.0,0,0.707,0.293,0.2,890,6.768,0.6575,0.5216,0.5367
+recursive,hybrid,5,How do banks earn profit from lending?,1,1.0,0.2,0.6131,0.5,1.0,0,0.6777,0.3223,0.2,743,10.988,0.6561,0.502,0.5367
+recursive,dense_rerank,5,How do banks earn profit from lending?,1,1.0,0.2,0.6131,0.5,1.0,0,0.7019,0.2981,0.4,762,6.773,0.6445,0.5089,0.5367
+recursive,hybrid_rerank,5,How do banks earn profit from lending?,1,1.0,0.2,0.6131,0.5,1.0,0,0.7019,0.2981,0.4,762,10.99,0.6445,0.5089,0.5367
+recursive,dense,6,What conditions define liquidity risk in banking?,1,1.0,0.2,0.6131,1.0,1.0,0,0.6937,0.3063,0.2,940,4.375,0.5875,0.4925,0.5768
+recursive,hybrid,6,What conditions define liquidity risk in banking?,1,1.0,0.2,0.6131,1.0,1.0,0,0.6759,0.3241,0.4,843,9.474,0.5812,0.4952,0.5768
+recursive,dense_rerank,6,What conditions define liquidity risk in banking?,1,1.0,0.2,0.6131,1.0,1.0,0,0.6696,0.3304,0.6,793,4.379,0.5774,0.4977,0.5768
+recursive,hybrid_rerank,6,What conditions define liquidity risk in banking?,1,1.0,0.2,0.6131,1.0,1.0,0,0.6696,0.3304,0.6,793,9.475,0.5774,0.4977,0.5768
+recursive,dense,7,What components form bank capital?,1,1.0,0.2,0.4693,1.0,1.0,0,0.6935,0.3065,0.4,881,5.727,0.5713,0.3417,0.4332
+recursive,hybrid,7,What components form bank capital?,1,1.0,0.2,0.4693,1.0,1.0,0,0.6775,0.3225,0.4,928,10.982,0.5659,0.3527,0.4374
+recursive,dense_rerank,7,What components form bank capital?,1,1.0,0.2,0.4693,1.0,1.0,0,0.6295,0.3705,0.6,795,5.733,0.5521,0.3552,0.4332
+recursive,hybrid_rerank,7,What components form bank capital?,1,1.0,0.2,0.4693,1.0,1.0,0,0.6295,0.3705,0.6,795,10.984,0.5521,0.3552,0.4332
+recursive,dense,8,Where did modern banking evolve?,1,1.0,0.4,0.6508,1.0,1.0,0,0.671,0.329,0.6,878,5.071,0.5962,0.3991,0.4104
+recursive,hybrid,8,Where did modern banking evolve?,1,1.0,0.4,0.6508,1.0,1.0,0,0.6454,0.3546,0.6,852,8.905,0.5888,0.3601,0.4035
+recursive,dense_rerank,8,Where did modern banking evolve?,1,1.0,0.2,0.4693,1.0,1.0,0,0.601,0.399,0.8,739,5.076,0.5755,0.369,0.4143
+recursive,hybrid_rerank,8,Where did modern banking evolve?,1,1.0,0.2,0.4693,1.0,1.0,0,0.601,0.399,0.8,739,8.907,0.5755,0.369,0.4143
+recursive,dense,9,What types of bank accounts are mentioned?,1,1.0,0.4,0.6508,1.0,1.0,0,0.6838,0.3162,0.2,871,4.218,0.6751,0.4848,0.5143
+recursive,hybrid,9,What types of bank accounts are mentioned?,1,1.0,0.6,0.9675,1.0,1.0,0,0.6603,0.3397,0.2,860,8.241,0.6617,0.4802,0.5226
+recursive,dense_rerank,9,What types of bank accounts are mentioned?,1,1.0,0.6,0.9469,1.0,1.0,0,0.6806,0.3194,0.2,851,4.222,0.6667,0.4919,0.5226
+recursive,hybrid_rerank,9,What types of bank accounts are mentioned?,1,1.0,0.6,0.9469,1.0,1.0,0,0.6806,0.3194,0.2,851,8.242,0.6667,0.4919,0.5226
+header,dense,0,What does a bank do with deposits and loans?,1,0.25,0.2,0.2021,1.0,4.0,0,0.7136,0.2864,0.6,1866,3.131,0.6838,0.5796,0.5798
+header,hybrid,0,What does a bank do with deposits and loans?,1,0.25,0.2,0.2021,1.0,4.0,0,0.641,0.359,1.0,2156,6.71,0.6673,0.5822,0.5895
+header,dense_rerank,0,What does a bank do with deposits and loans?,0,0.0,0.0,0.0,0.0,,1,0.6654,0.3346,0.4,1275,1195.211,0.6464,0.6025,0.5936
+header,hybrid_rerank,0,What does a bank do with deposits and loans?,0,0.0,0.0,0.0,0.0,,1,0.6654,0.3346,0.4,1275,1157.859,0.6464,0.6025,0.5936
+header,dense,1,What role do banks play in the economy?,1,1.0,0.2,0.6131,1.0,1.0,0,0.7202,0.2798,0.6,1656,4.273,0.6316,0.4749,0.491
+header,hybrid,1,What role do banks play in the economy?,1,1.0,0.2,0.6131,1.0,1.0,0,0.6486,0.3514,0.6,2536,8.172,0.6229,0.4825,0.4995
+header,dense_rerank,1,What role do banks play in the economy?,1,0.5,0.2,0.3869,1.0,2.0,0,0.6731,0.3269,0.8,1179,1177.046,0.6122,0.4735,0.4989
+header,hybrid_rerank,1,What role do banks play in the economy?,1,0.5,0.2,0.3869,1.0,2.0,0,0.6731,0.3269,0.8,1179,1158.407,0.6122,0.4735,0.4989
+header,dense,2,What regulatory requirements are banks subject to?,1,0.25,0.2,0.2021,1.0,4.0,0,0.6787,0.3213,0.6,2440,4.519,0.6661,0.4289,0.4409
+header,hybrid,2,What regulatory requirements are banks subject to?,1,0.5,0.2,0.2961,1.0,2.0,0,0.6502,0.3498,0.6,2416,9.083,0.6633,0.4353,0.4409
+header,dense_rerank,2,What regulatory requirements are banks subject to?,1,0.3333,0.2,0.2346,1.0,3.0,0,0.6558,0.3442,0.8,1959,1185.777,0.658,0.4334,0.4409
+header,hybrid_rerank,2,What regulatory requirements are banks subject to?,1,0.3333,0.2,0.2346,1.0,3.0,0,0.6558,0.3442,0.8,1959,1219.214,0.658,0.4334,0.4409
+header,dense,3,How do banks handle customer payments?,1,1.0,0.2,0.4693,0.6667,1.0,0,0.6991,0.3009,0.4,1676,4.429,0.6657,0.5989,0.5619
+header,hybrid,3,How do banks handle customer payments?,1,1.0,0.2,0.4693,0.6667,1.0,0,0.6753,0.3247,0.6,1344,8.664,0.6465,0.575,0.5619
+header,dense_rerank,3,How do banks handle customer payments?,1,1.0,0.2,0.4693,0.6667,1.0,0,0.6809,0.3191,0.2,1449,1160.568,0.66,0.5934,0.5622
+header,hybrid_rerank,3,How do banks handle customer payments?,1,1.0,0.2,0.4693,0.6667,1.0,0,0.6809,0.3191,0.2,1449,1168.433,0.66,0.5934,0.5622
+header,dense,4,How is money created in banking systems?,1,1.0,0.2,0.4693,1.0,1.0,0,0.6825,0.3175,0.6,1593,4.726,0.6534,0.5378,0.5086
+header,hybrid,4,How is money created in banking systems?,1,1.0,0.2,0.4693,1.0,1.0,0,0.627,0.373,1.0,1390,9.169,0.6269,0.5395,0.5206
+header,dense_rerank,4,How is money created in banking systems?,1,1.0,0.2,0.4693,1.0,1.0,0,0.6195,0.3805,0.8,1625,1138.684,0.6321,0.5169,0.5206
+header,hybrid_rerank,4,How is money created in banking systems?,1,1.0,0.2,0.4693,1.0,1.0,0,0.6195,0.3805,0.8,1625,1161.76,0.6321,0.5169,0.5206
+header,dense,5,How do banks earn profit from lending?,1,1.0,0.2,0.6131,0.5,1.0,0,0.6643,0.3357,0.4,1840,5.942,0.652,0.488,0.5109
+header,hybrid,5,How do banks earn profit from lending?,1,1.0,0.2,0.6131,0.5,1.0,0,0.6871,0.3129,0.6,1532,11.575,0.652,0.5082,0.5109
+header,dense_rerank,5,How do banks earn profit from lending?,1,1.0,0.2,0.6131,0.5,1.0,0,0.6715,0.3285,0.8,1001,1157.999,0.6268,0.5131,0.5109
+header,hybrid_rerank,5,How do banks earn profit from lending?,1,1.0,0.2,0.6131,0.5,1.0,0,0.6715,0.3285,0.8,1001,1173.283,0.6268,0.5131,0.5109
+header,dense,6,What conditions define liquidity risk in banking?,1,1.0,0.2,0.6131,1.0,1.0,0,0.6612,0.3388,0.8,2187,4.911,0.5679,0.4659,0.5547
+header,hybrid,6,What conditions define liquidity risk in banking?,1,1.0,0.2,0.6131,1.0,1.0,0,0.6585,0.3415,0.6,1740,11.664,0.5627,0.4696,0.5547
+header,dense_rerank,6,What conditions define liquidity risk in banking?,1,1.0,0.2,0.6131,1.0,1.0,0,0.6514,0.3486,1.0,1150,1168.72,0.5524,0.4787,0.5592
+header,hybrid_rerank,6,What conditions define liquidity risk in banking?,1,1.0,0.2,0.6131,1.0,1.0,0,0.6514,0.3486,1.0,1150,1171.398,0.5524,0.4787,0.5592
+header,dense,7,What components form bank capital?,1,1.0,0.4,0.6714,1.0,1.0,0,0.6505,0.3495,0.8,1348,5.5,0.5614,0.3568,0.4255
+header,hybrid,7,What components form bank capital?,1,1.0,0.4,0.6714,1.0,1.0,0,0.6505,0.3495,0.8,1348,11.684,0.5614,0.3568,0.4255
+header,dense_rerank,7,What components form bank capital?,1,1.0,0.2,0.4693,1.0,1.0,0,0.6731,0.3269,0.8,1179,1163.802,0.5557,0.3416,0.4181
+header,hybrid_rerank,7,What components form bank capital?,1,1.0,0.2,0.4693,1.0,1.0,0,0.6731,0.3269,0.8,1179,1204.886,0.5557,0.3416,0.4181
+header,dense,8,Where did modern banking evolve?,1,1.0,0.2,0.4693,1.0,1.0,0,0.5862,0.4138,0.8,1285,5.264,0.5714,0.3344,0.4052
+header,hybrid,8,Where did modern banking evolve?,1,1.0,0.2,0.4693,1.0,1.0,0,0.602,0.398,0.8,1487,10.079,0.5617,0.3289,0.4052
+header,dense_rerank,8,Where did modern banking evolve?,1,1.0,0.2,0.4693,1.0,1.0,0,0.5862,0.4138,0.8,1285,1355.983,0.5714,0.3344,0.4052
+header,hybrid_rerank,8,Where did modern banking evolve?,1,1.0,0.2,0.4693,1.0,1.0,0,0.5862,0.4138,0.8,1285,1504.064,0.5714,0.3344,0.4052
+header,dense,9,What types of bank accounts are mentioned?,1,1.0,0.8,1.149,1.0,1.0,0,0.6769,0.3231,0.8,1335,7.873,0.6348,0.4784,0.5135
+header,hybrid,9,What types of bank accounts are mentioned?,1,1.0,0.6,0.9675,1.0,1.0,0,0.6609,0.3391,0.6,1496,14.298,0.5988,0.4715,0.5135
+header,dense_rerank,9,What types of bank accounts are mentioned?,1,0.3333,0.4,0.4367,0.6667,3.0,0,0.6701,0.3299,0.6,1276,1485.776,0.6029,0.4534,0.5039
+header,hybrid_rerank,9,What types of bank accounts are mentioned?,1,0.3333,0.4,0.4367,0.6667,3.0,0,0.6701,0.3299,0.6,1276,1511.225,0.6029,0.4534,0.5039
+semantic,dense,0,What does a bank do with deposits and loans?,1,1.0,0.2,0.4693,1.0,1.0,0,0.7175,0.2825,0.8,5658,6.367,0.6535,0.5476,0.5862
+semantic,hybrid,0,What does a bank do with deposits and loans?,1,0.3333,0.2,0.2346,1.0,3.0,0,0.7175,0.2825,0.8,5658,11.899,0.6535,0.5476,0.5862
+semantic,dense_rerank,0,What does a bank do with deposits and loans?,0,0.0,0.0,0.0,0.0,,1,0.6006,0.3994,0.8,3363,440.246,0.599,0.5396,0.5624
+semantic,hybrid_rerank,0,What does a bank do with deposits and loans?,0,0.0,0.0,0.0,0.0,,1,0.6006,0.3994,0.8,3363,498.611,0.599,0.5396,0.5624
+semantic,dense,1,What role do banks play in the economy?,1,1.0,0.2,0.6131,1.0,1.0,0,0.6903,0.3097,1.0,4614,7.293,0.6241,0.499,0.5123
+semantic,hybrid,1,What role do banks play in the economy?,1,1.0,0.2,0.6131,1.0,1.0,0,0.7175,0.2825,0.8,5658,13.351,0.6198,0.4963,0.5123
+semantic,dense_rerank,1,What role do banks play in the economy?,1,1.0,0.2,0.6131,1.0,1.0,0,0.6731,0.3269,0.8,3677,464.624,0.6009,0.4788,0.5108
+semantic,hybrid_rerank,1,What role do banks play in the economy?,1,1.0,0.2,0.6131,1.0,1.0,0,0.6731,0.3269,0.8,3677,463.751,0.6009,0.4788,0.5108
+semantic,dense,2,What regulatory requirements are banks subject to?,1,0.3333,0.2,0.2346,1.0,3.0,0,0.7175,0.2825,0.8,5658,6.902,0.6355,0.44,0.4491
+semantic,hybrid,2,What regulatory requirements are banks subject to?,1,0.3333,0.2,0.2346,1.0,3.0,0,0.7022,0.2978,0.8,5313,13.299,0.6157,0.4424,0.4491
+semantic,dense_rerank,2,What regulatory requirements are banks subject to?,1,0.3333,0.2,0.2346,1.0,3.0,0,0.7018,0.2982,1.0,4575,444.05,0.6265,0.4416,0.4484
+semantic,hybrid_rerank,2,What regulatory requirements are banks subject to?,1,0.3333,0.2,0.2346,1.0,3.0,0,0.7018,0.2982,1.0,4575,441.873,0.6265,0.4416,0.4484
+semantic,dense,3,How do banks handle customer payments?,1,1.0,0.2,0.4693,0.6667,1.0,0,0.6864,0.3136,0.8,5081,6.576,0.6283,0.5469,0.5081
+semantic,hybrid,3,How do banks handle customer payments?,1,1.0,0.2,0.4693,0.6667,1.0,0,0.7175,0.2825,0.8,5658,12.362,0.6248,0.5353,0.5081
+semantic,dense_rerank,3,How do banks handle customer payments?,0,0.0,0.0,0.0,0.0,,1,0.6332,0.3668,0.8,4794,415.739,0.5863,0.509,0.5004
+semantic,hybrid_rerank,3,How do banks handle customer payments?,0,0.0,0.0,0.0,0.0,,1,0.6332,0.3668,0.8,4794,451.117,0.5863,0.509,0.5004
+semantic,dense,4,How is money created in banking systems?,1,1.0,0.2,0.4693,1.0,1.0,0,0.7175,0.2825,0.8,5658,6.769,0.6368,0.5261,0.4994
+semantic,hybrid,4,How is money created in banking systems?,1,1.0,0.2,0.4693,1.0,1.0,0,0.7175,0.2825,0.8,5658,12.511,0.6368,0.5261,0.4994
+semantic,dense_rerank,4,How is money created in banking systems?,1,0.3333,0.2,0.2346,1.0,3.0,0,0.6395,0.3605,1.0,3149,426.6,0.622,0.5136,0.4994
+semantic,hybrid_rerank,4,How is money created in banking systems?,1,0.3333,0.2,0.2346,1.0,3.0,0,0.6395,0.3605,1.0,3149,454.577,0.622,0.5136,0.4994
+semantic,dense,5,How do banks earn profit from lending?,1,1.0,0.2,0.6131,0.5,1.0,0,0.7175,0.2825,0.8,5658,6.725,0.6241,0.495,0.47
+semantic,hybrid,5,How do banks earn profit from lending?,1,1.0,0.2,0.6131,0.5,1.0,0,0.6903,0.3097,1.0,4614,11.987,0.6227,0.4864,0.4599
+semantic,dense_rerank,5,How do banks earn profit from lending?,1,0.25,0.2,0.2641,0.5,4.0,0,0.6743,0.3257,0.8,4022,417.512,0.6199,0.4859,0.47
+semantic,hybrid_rerank,5,How do banks earn profit from lending?,1,0.25,0.2,0.2641,0.5,4.0,0,0.6743,0.3257,0.8,4022,450.695,0.6199,0.4859,0.47
+semantic,dense,6,What conditions define liquidity risk in banking?,1,1.0,0.2,0.6131,1.0,1.0,0,0.7018,0.2982,1.0,4575,7.056,0.5506,0.4634,0.4968
+semantic,hybrid,6,What conditions define liquidity risk in banking?,1,1.0,0.2,0.6131,1.0,1.0,0,0.7175,0.2825,0.8,5658,13.034,0.5474,0.4711,0.5054
+semantic,dense_rerank,6,What conditions define liquidity risk in banking?,1,1.0,0.2,0.6131,1.0,1.0,0,0.7175,0.2825,0.8,5658,449.228,0.5474,0.4711,0.5054
+semantic,hybrid_rerank,6,What conditions define liquidity risk in banking?,1,1.0,0.2,0.6131,1.0,1.0,0,0.7175,0.2825,0.8,5658,445.01,0.5474,0.4711,0.5054
+semantic,dense,7,What components form bank capital?,1,0.5,0.4,0.4776,1.0,2.0,0,0.7175,0.2825,0.8,5658,7.146,0.5772,0.3753,0.4395
+semantic,hybrid,7,What components form bank capital?,1,0.5,0.4,0.4982,1.0,2.0,0,0.6449,0.3551,0.8,3988,12.247,0.5595,0.3745,0.4369
+semantic,dense_rerank,7,What components form bank capital?,1,0.5,0.4,0.4776,1.0,2.0,0,0.7175,0.2825,0.8,5658,445.228,0.5772,0.3753,0.4395
+semantic,hybrid_rerank,7,What components form bank capital?,1,0.5,0.4,0.4776,1.0,2.0,0,0.7175,0.2825,0.8,5658,453.089,0.5772,0.3753,0.4395
+semantic,dense,8,Where did modern banking evolve?,1,0.3333,0.2,0.2346,1.0,3.0,0,0.6741,0.3259,1.0,3897,6.489,0.5899,0.3452,0.4035
+semantic,hybrid,8,Where did modern banking evolve?,1,0.5,0.2,0.2961,1.0,2.0,0,0.6717,0.3283,1.0,2838,11.873,0.5868,0.3533,0.4035
+semantic,dense_rerank,8,Where did modern banking evolve?,1,0.3333,0.2,0.2346,1.0,3.0,0,0.6511,0.3489,1.0,2804,424.416,0.5732,0.352,0.4083
+semantic,hybrid_rerank,8,Where did modern banking evolve?,1,0.3333,0.2,0.2346,1.0,3.0,0,0.6511,0.3489,1.0,2804,443.343,0.5732,0.352,0.4083
+semantic,dense,9,What types of bank accounts are mentioned?,1,1.0,0.8,1.2021,1.0,1.0,0,0.692,0.308,0.8,5042,6.39,0.6111,0.4763,0.5218
+semantic,hybrid,9,What types of bank accounts are mentioned?,1,1.0,0.8,1.2021,1.0,1.0,0,0.692,0.308,0.8,5042,13.25,0.6111,0.4763,0.5218
+semantic,dense_rerank,9,What types of bank accounts are mentioned?,1,1.0,1.0,1.3836,1.0,1.0,0,0.7175,0.2825,0.8,5658,434.305,0.6068,0.4859,0.5221
+semantic,hybrid_rerank,9,What types of bank accounts are mentioned?,1,1.0,1.0,1.3836,1.0,1.0,0,0.7175,0.2825,0.8,5658,430.648,0.6068,0.4859,0.5221
