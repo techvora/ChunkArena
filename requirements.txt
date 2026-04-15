@@ -13,5 +13,12 @@ langchain-huggingface
 langchain-experimental
 sentence-transformers
 
-rank-bm25 
+rank-bm25
 openpyxl
+
+# Metrics and chunking standards
+nltk
+tiktoken
+scikit-learn
+scipy
+tqdm

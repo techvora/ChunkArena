@@ -1,0 +1,698 @@
+[
+  {
+    "chunk_id": "fixed_0",
+    "text": "## Banking system\n\n[Image: https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/London.bankof]\n\n[Image: https://upload.wikimedia.org/wikipedia/en/thumb/9/96/Symbol\\_category\\_clas]\n\n[Image: https://upload.wikimedia.org/wikipedia/en/thumb/4/4a/Commonslogo.svg/20px-Commons-logo.svg.png]\n\n[Image: https://upload.wikimedia.org/wikipedia/en/thumb/e/e2/Symbol\\_portal\\_class.s]",
+    "metadata": {
+      "char_start": 0,
+      "char_end": 377,
+      "unit_ids": [
+        "sec_1",
+        "img_1",
+        "img_2",
+        "img_3",
+        "img_4"
+      ],
+      "unit_count": 5,
+      "metadata_recovery_failed": false
+    }
+  },
+  {
+    "chunk_id": "fixed_1",
+    "text": "england.arp.jpg/250px-London.bankofengland.arp.jpg Image: s.svg/20px-Symbol_category_class.svg.png Image: Image: vg/20px-Symbol_portal_class.svg.png A bank is a financial institution that accepts deposits from the public and creates a demand deposit while making loans. Lending activities can be directly performed by the bank or indirectly through capital markets. Banks play an important role in financial stability and the economy of a country, so most countries exercise a high degree of regulation over banks. Most countries have institutionalized a system known as fractional-reserve banking, under which banks hold liquid assets equal to only a portion of their current liabilities. In addition to other regulations intended to ensure liquidity, banks are generally subject to minimum capital requirements based on an international set of capital standards, the Basel Accords. Banking in its modern sense evolved in the fourteenth century in the prosperous cities of Renaissance Italy but, in",
+    "metadata": {
+      "char_start": 379,
+      "char_end": 1378,
+      "unit_ids": [
+        "p_1"
+      ],
+      "unit_count": 1,
+      "metadata_recovery_failed": false
+    }
+  },
+  {
+    "chunk_id": "fixed_2",
+    "text": "many ways, functioned as a continuation of ideas and concepts of credit and lending that have their roots in the ancient world. In the history of banking, a number of banking dynasties - notably, the Medicis, the Pazzi, the Fuggers, the Welsers, the Berenbergs, and the Rothschilds - have played a central role over many centuries. The oldest existing retail bank is Banca Monte dei Paschi di Siena (founded in 1472), while the oldest existing merchant bank is Berenberg Bank (founded in 1590). A banker is a person who engages in the business of banking.",
+    "metadata": {
+      "char_start": 1379,
+      "char_end": 1934,
+      "unit_ids": [
+        "p_1"
+      ],
+      "unit_count": 1,
+      "metadata_recovery_failed": false
+    }
+  },
+  {
+    "chunk_id": "fixed_3",
+    "text": "## Activities\n\n## Standard business\n\n[Image: https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/WinonaSavingsBankVault.JPG/250px-WinonaSavingsBankVault.JPG]\n\nBanks act as payment agents by conducting checking or current accounts for customers, paying checks drawn by customers in the bank, and collecting checks deposited to customers' current accounts. Banks also enable customer payments via other payment methods such as Automated Clearing House (ACH), Wire transfers or telegraphic transfer, EFTPOS, and automated teller machines (ATMs).\n\nBanks borrow money by accepting funds deposited on current accounts, by accepting term deposits, and by issuing debt securities such as banknotes and bonds. Banks lend money by making advances to customers on current accounts, by making installment loans, and by investing in marketable debt securities and other forms of money lending.",
+    "metadata": {
+      "char_start": 1936,
+      "char_end": 2822,
+      "unit_ids": [
+        "sec_2",
+        "sec_3",
+        "img_5",
+        "p_2",
+        "p_3"
+      ],
+      "unit_count": 5,
+      "metadata_recovery_failed": false
+    }
+  },
+  {
+    "chunk_id": "fixed_4",
+    "text": "Banks provide different payment services, and a bank account is considered indispensable by most businesses and individuals. Nonbanks that provide payment services such as remittance companies are normally not considered as an adequate substitute for a bank account.\n\nBanks issue new money when they make loans. In contemporary banking systems, regulators set a minimum level of reserve funds that banks must hold against the deposit liabilities created by the funding of these loans, in order to ensure that the banks can meet demands for payment of such deposits. These reserves can be acquired through the acceptance of new deposits, sale of other assets, or borrowing from other banks including the central bank.\n\n## Range of activities\n\nActivities undertaken by banks include personal banking, corporate banking, investment banking, private banking, transaction banking, insurance, consumer finance, trade finance and other related.\n\n## Channels",
+    "metadata": {
+      "char_start": 2824,
+      "char_end": 3774,
+      "unit_ids": [
+        "p_4",
+        "p_5",
+        "sec_4",
+        "p_6",
+        "sec_5"
+      ],
+      "unit_count": 5,
+      "metadata_recovery_failed": false
+    }
+  },
+  {
+    "chunk_id": "fixed_5",
+    "text": "[Image: https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/SunTrust\\_Bank%2C\\_Gaithersburg%2C\\_Maryland%2C\\_August\\_25%2C\\_2015.jpg/250px-SunTrust\\_Bank%2C\\_Gaithersburg%2C\\_Maryland%2C\\_August\\_25%2C\\_2015.jpg]\n\n## Image:\n\nBanks offer many different channels to access their banking and other services:\n\n## Business models\n\nadditional business models have been suggested such as freemium, monetization of data, white-labeling of banking and payment applications, or the cross-selling of complementary products.",
+    "metadata": {
+      "char_start": 3776,
+      "char_end": 4294,
+      "unit_ids": [
+        "img_6",
+        "p_7",
+        "p_8",
+        "sec_6",
+        "p_9"
+      ],
+      "unit_count": 5,
+      "metadata_recovery_failed": false
+    }
+  },
+  {
+    "chunk_id": "fixed_6",
+    "text": "Banks generate revenue in a variety of different ways including interest, transaction fees and financial advice. Traditionally, the most significant method is via charging interest on the capital it lends out to customers. The bank profits from the difference between the level of interest it pays for deposits and other sources of funds, and the level of interest it charges in its lending activities. This difference is referred to as the spread between the cost of funds and the loan interest rate. Historically, profitability from lending activities has been cyclical and dependent on the needs and strengths of loan customers and the stage of the economic cycle. Fees and financial advice constitute a more stable revenue stream and banks have therefore placed more emphasis on these revenue lines to smooth their financial performance. In the past 20 years, American banks have taken many measures to ensure that they remain profitable while responding to increasingly changing market",
+    "metadata": {
+      "char_start": 4296,
+      "char_end": 5286,
+      "unit_ids": [
+        "p_10"
+      ],
+      "unit_count": 1,
+      "metadata_recovery_failed": false
+    }
+  },
+  {
+    "chunk_id": "fixed_7",
+    "text": "conditions. This helps in making a profit and facilitates economic development as a whole. Recently, as banks have been faced with pressure from fintechs, new and",
+    "metadata": {
+      "char_start": 5287,
+      "char_end": 5449,
+      "unit_ids": [
+        "p_10"
+      ],
+      "unit_count": 1,
+      "metadata_recovery_failed": false
+    }
+  },
+  {
+    "chunk_id": "fixed_8",
+    "text": "## Products\n\n[Image: https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/NatWest\\_Castl]\n\n[Image: https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Halifax\\_bank]\n\n%2C_Commercial_Street%2C_Leeds_%2827th_May_2010%29.jpg/250px-Halifax_bank%2C_Commercial_Street%2C_Leeds_ %2827th_May_2010%29.jpg Image:\n\ne_Street.jpg/250px-NatWest_Castle_Street.jpg\n\n## History\n\n[Image: https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Wypedzenie.jp]\n\ng/250px-Wypedzenie.jpg\n\nBanking as an archaic activity (or quasi-banking) is thought to have begun as early as the end of the 4th millennium BCE, to the 3rd millennia BCE.\n\n## Medieval",
+    "metadata": {
+      "char_start": 5451,
+      "char_end": 6090,
+      "unit_ids": [
+        "sec_7",
+        "img_7",
+        "img_8",
+        "p_11",
+        "p_12",
+        "sec_8",
+        "img_9",
+        "p_13",
+        "p_14",
+        "sec_9"
+      ],
+      "unit_count": 10,
+      "metadata_recovery_failed": false
+    }
+  },
+  {
+    "chunk_id": "fixed_9",
+    "text": "In Europe, the first recorded instances of private banks were run by the Knights Templar. The Knights provided safe passage for pilgrims traveling to Jerusalem. To avoid being targeted by robbers because of the large sum of money required for the pilgrimage, pilgrims would exchange money in Templar strongholds for a receipt. They could then withdraw the money along the route at other Templar strongholds to purchase necessities. The organization would provide these services from the 12th century until their disbandment in the early 14th century. The present era of banking can be traced to wealthy medieval Renaissance Italian city-states, whose elite families such as the Bardi and Peruzzi dominated banking in 14th-century Florence before establishing branches in many other parts of Europe.[page needed] Giovanni di Bicci de' Medici set up one of the most famous Italian banks, the Medici Bank, in 1397. The Consell de Cent founded the earliestknown state deposit bank, the Taula de canvi de",
+    "metadata": {
+      "char_start": 6092,
+      "char_end": 7091,
+      "unit_ids": [
+        "p_15"
+      ],
+      "unit_count": 1,
+      "metadata_recovery_failed": false
+    }
+  },
+  {
+    "chunk_id": "fixed_10",
+    "text": "Barcelona (Table of Change), in 1401 at Barcelona. This was followed by The Bank of Saint George, created in 1407 at Genoa, Italy.",
+    "metadata": {
+      "char_start": 7092,
+      "char_end": 7222,
+      "unit_ids": [
+        "p_15"
+      ],
+      "unit_count": 1,
+      "metadata_recovery_failed": false
+    }
+  },
+  {
+    "chunk_id": "fixed_11",
+    "text": "## Early modern\n\n[Image: https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Bank\\_of\\_Engla]\n\nnd_Charter_sealing_1694.jpg/250px-Bank_of_England_Charter_sealing_1694.jpg\n\nFractional reserve banking and the issue of banknotes emerged in the 17th and 18th centuries. Merchants started to store their gold with the goldsmiths of London, who possessed private vaults, and who charged a fee for that service. In exchange for each deposit of precious metal, the goldsmiths issued receipts certifying the quantity and purity of the metal they held as a bailee; these receipts could not be assigned, only the original depositor could collect the stored goods.",
+    "metadata": {
+      "char_start": 7224,
+      "char_end": 7881,
+      "unit_ids": [
+        "sec_10",
+        "img_10",
+        "p_16",
+        "p_17"
+      ],
+      "unit_count": 4,
+      "metadata_recovery_failed": false
+    }
+  },
+  {
+    "chunk_id": "fixed_12",
+    "text": "Gradually the goldsmiths began to lend money out on behalf of the depositor, and promissory notes, which evolved into banknotes, were issued for money deposited as a loan to the goldsmith. By the 19th century, ordinary deposits of money in banks had become a mere loan, or mutuum, and the bank restored an equivalent sum whenever it was demanded Money, when paid into a bank, ceases altogether to be the money of the principal (see Parker v. Marchant, 1 Phillips 360); it is then the money of the banker, who is bound to return an equivalent, by paying a similar sum to that deposited with him, when he is asked for it. The goldsmith paid interest on deposits. Since the promissory notes were payable on demand, and the advances (loans) to the goldsmith's customers were repayable over a longer time-period, this was an early form of fractional reserve banking. The promissory notes developed into an assignable instrument which could circulate as a safe and convenient form of money backed by the",
+    "metadata": {
+      "char_start": 7883,
+      "char_end": 8880,
+      "unit_ids": [
+        "p_18"
+      ],
+      "unit_count": 1,
+      "metadata_recovery_failed": false
+    }
+  },
+  {
+    "chunk_id": "fixed_13",
+    "text": "goldsmith's promise to pay, allowing goldsmiths to advance loans with little risk of default. Thus the goldsmiths of London became the forerunners of banking by creating new money based on credit.",
+    "metadata": {
+      "char_start": 8881,
+      "char_end": 9077,
+      "unit_ids": [
+        "p_18"
+      ],
+      "unit_count": 1,
+      "metadata_recovery_failed": false
+    }
+  },
+  {
+    "chunk_id": "fixed_14",
+    "text": "## Image:\n\n[Image: https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Pohjoismaiden\\_Osakepankin\\_Helsingin\\_sivukonttori.jpg/250px-Pohjoismaiden\\_Osakepankin\\_Helsingin\\_sivukonttori.jpg]\n\nThe Bank of England originated the permanent issue of banknotes in 1695. The Royal Bank of Scotland established the first overdraft facility in 1728. By the beginning of the 19th century, Lubbock's Bank had established a bankers' clearing house in London to allow multiple banks to clear transactions. The Rothschilds pioneered international finance on a large scale, financing the purchase of shares in the Suez canal for the British government in 1875.[need quotation to verify]\n\n## Modern",
+    "metadata": {
+      "char_start": 9079,
+      "char_end": 9767,
+      "unit_ids": [
+        "p_19",
+        "img_11",
+        "p_20",
+        "sec_11"
+      ],
+      "unit_count": 4,
+      "metadata_recovery_failed": false
+    }
+  },
+  {
+    "chunk_id": "fixed_15",
+    "text": "During the 20th century, developments in telecommunications and computing caused major changes to banks' operations and let banks dramatically increase in size and geographic spread. The 2008 financial crisis led to bank failures, including some of the world's largest banks, and provoked debate about bank regulation.\n\n## Etymology\n\nThe word bank was taken into Middle English from Middle French banque, from Old Italian banco, meaning \"table\", from Old High German banc, bank \"bench, counter\". Benches were used as makeshift desks or exchange counters during the Renaissance by Florentine bankers, who used to make their transactions atop desks covered by green tablecloths.\n\n## Definition\n\nThe definition of a bank varies from country to country. See the relevant country pages for more information.",
+    "metadata": {
+      "char_start": 9769,
+      "char_end": 10571,
+      "unit_ids": [
+        "p_21",
+        "sec_12",
+        "p_22",
+        "sec_13",
+        "p_23"
+      ],
+      "unit_count": 5,
+      "metadata_recovery_failed": false
+    }
+  },
+  {
+    "chunk_id": "fixed_16",
+    "text": "Under English common law, a banker is defined as a person who carries on the business of banking by conducting current accounts for their customers, paying checks drawn on them as well as collecting them for their customers.",
+    "metadata": {
+      "char_start": 10573,
+      "char_end": 10797,
+      "unit_ids": [
+        "p_24"
+      ],
+      "unit_count": 1,
+      "metadata_recovery_failed": false
+    }
+  },
+  {
+    "chunk_id": "fixed_17",
+    "text": "[Image:",
+    "metadata": {
+      "char_start": 19,
+      "char_end": 26,
+      "unit_ids": [
+        "img_1"
+      ],
+      "unit_count": 1,
+      "metadata_recovery_failed": false
+    }
+  },
+  {
+    "chunk_id": "fixed_18",
+    "text": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Banco\\_de\\_Venezuela%2C\\_Coro.JPG/250px-Banco\\_de\\_Venezuela%2C\\_Coro.JPGImage:https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Bank.Pokhara.JPG/250px-Bank.Pokhara.JPGInmostcommonlawjurisdictionsthereisaBillsofExchangeActthatcodifiesthelawinrelationtonegotiableinstruments,includingchecks,andthisActcontainsastatutorydefinitionofthetermbanker:bankerincludesabodyofpersons,whetherincorporatedornot,whocarryonthebusinessofbanking'(Section2,Interpretation).Althoughthisdefinitionseemscircular,itisactuallyfunctional,becauseitensuresthatthelegalbasisforbanktransactionssuchaschecksdoesnotdependonhowthebankisstructuredorregulated.Thebusinessofbankingisinmanycommonlawcountriesnotdefinedbystatutebutbycommonlaw,thedefinitionabove.InotherEnglishcommonlawjurisdictionstherearestatutorydefinitionsofthebusinessofbankingorbankingbusiness.Whenlookingatthesedefinitionsitisimportanttokeepinmindthattheyaredefiningthebusinessofbankingforthepurp",
+    "metadata": {
+      "char_start": 10807,
+      "char_end": 11806,
+      "unit_ids": [
+        "img_12"
+      ],
+      "unit_count": 1,
+      "metadata_recovery_failed": false
+    }
+  },
+  {
+    "chunk_id": "fixed_19",
+    "text": "osesofthelegislation,andnotnecessarilyingeneral.Inparticular,mostofthedefinitionsarefromlegislationthathasthepurposeofregulatingandsupervisingbanksratherthanregulatingtheactualbusinessofbanking.However,inmanycases,thestatutorydefinitioncloselymirrorsthecommonlawone.Examplesofstatutorydefinitions:SincetheadventofEFTPOS(ElectronicFundsTransferatPointOfSale),directcredit,directdebitandinternetbanking,thecheckhaslostitsprimacyinmostbankingsystemsasapaymentinstrument.Thishasledlegaltheoriststosuggestthatthecheckbaseddefinitionshouldbebroadenedtoincludefinancialinstitutionsthatconductcurrentaccountsforcustomersandenablecustomerstopayandbepaidbythirdparties,eveniftheydonotpayandcollectchecks.]",
+    "metadata": {
+      "char_start": 11806,
+      "char_end": 12501,
+      "unit_ids": [
+        "img_12"
+      ],
+      "unit_count": 1,
+      "metadata_recovery_failed": false
+    }
+  },
+  {
+    "chunk_id": "fixed_20",
+    "text": "## Capital and risk\n\nBanks face a number of risks in order to conduct their business, and how well these risks are managed and understood is a key driver behind profitability, and how much capital a bank is required to hold. Bank capital consists principally of equity, retained earnings and subordinated debt. The capital requirement is a bank regulation, which sets a framework within which a bank or depository institution must manage its balance sheet. The categorization of assets and capital is highly standardized so that it can be risk weighted. After the 2008 financial crisis, regulators force banks to issue Contingent convertible bonds (CoCos). These are hybrid capital securities that absorb losses in accordance with their contractual terms when the capital of the issuing bank falls below a certain level. Then debt is reduced and bank capitalization gets a boost. Owing to their capacity to absorb losses, CoCos have the potential to satisfy regulatory capital requirement.",
+    "metadata": {
+      "char_start": 12503,
+      "char_end": 13492,
+      "unit_ids": [
+        "sec_14",
+        "p_25"
+      ],
+      "unit_count": 2,
+      "metadata_recovery_failed": false
+    }
+  },
+  {
+    "chunk_id": "fixed_21",
+    "text": "## Banks in the economy\n\n[Image: https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/SEB\\_Building\\_i]\n\nn_Tallinn.jpg/250px-SEB_Building_in_Tallinn.jpg\n\n## Economic functions\n\n## Bank crisis\n\n[Image: https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Bosakov\\_dom.j]",
+    "metadata": {
+      "char_start": 13494,
+      "char_end": 13773,
+      "unit_ids": [
+        "sec_15",
+        "img_13",
+        "p_26",
+        "sec_16",
+        "sec_17",
+        "img_14"
+      ],
+      "unit_count": 6,
+      "metadata_recovery_failed": false
+    }
+  },
+  {
+    "chunk_id": "fixed_22",
+    "text": "pg/250px-Bosakov_dom.jpg Banks are susceptible to many forms of risk which have triggered occasional systemic crises. These include liquidity risk (where many depositors request withdrawals in excess of available funds), credit risk (the chance that those who owe money to the bank will not repay it), and interest rate risk (the possibility that the bank will become unprofitable, if rising interest rates force it to pay relatively more on its deposits than it receives on its loans). Bank crises have developed many times throughout history when one or more risks have emerged for the banking sector as a whole. Prominent examples include the bank run that occurred during the Great Depression, the U.S. Savings and Loan crisis in the 1980s and early 1990s, the Japanese banking crisis during the 1990s, and the sub-prime mortgage crisis in the 2000s. The 2023 global banking crisis is the latest of these crises: In March 2023, liquidity shortages and bank insolvencies led to three bank",
+    "metadata": {
+      "char_start": 13775,
+      "char_end": 14766,
+      "unit_ids": [
+        "p_27"
+      ],
+      "unit_count": 1,
+      "metadata_recovery_failed": false
+    }
+  },
+  {
+    "chunk_id": "fixed_23",
+    "text": "failures in the United States, and within two weeks, several of the world's largest banks failed or were shut down by regulators.",
+    "metadata": {
+      "char_start": 14767,
+      "char_end": 14896,
+      "unit_ids": [
+        "p_27"
+      ],
+      "unit_count": 1,
+      "metadata_recovery_failed": false
+    }
+  },
+  {
+    "chunk_id": "fixed_24",
+    "text": "## Size of global banking industry\n\nAssets of the largest 1,000 banks in the world grew by 6.8% in the 20082009 financial year to a record US$96.4 trillion while profits declined by 85% to US$115 billion. Growth in assets in adverse market conditions was largely a result of recapitalization. EU banks held the largest share of the total, 56% in 2008-2009, down from 61% in the previous year. Asian banks' share increased from 12% to 14% during the year, while the share of US banks increased from 11% to 13%. Fee revenue generated by global investment in banking totaled US$66.3 billion in 2009, up 12% on the previous year.\n\nThe United States has the most banks in the world in terms of institutions (5,330 as of 2015) and possibly branches (81,607 as of 2015). This is an indicator of the geography and regulatory structure of the US, resulting in a large number of small to medium-sized institutions in its banking system.",
+    "metadata": {
+      "char_start": 14898,
+      "char_end": 15824,
+      "unit_ids": [
+        "sec_18",
+        "p_28",
+        "p_29"
+      ],
+      "unit_count": 3,
+      "metadata_recovery_failed": false
+    }
+  },
+  {
+    "chunk_id": "fixed_25",
+    "text": "As of November 2009, China's top four banks have over 67,000 branches (ICBC:18000+, BOC:12000+, CCB:13000+, ABC:24000+) with 140 smaller banks with an undetermined number of branches. Japan had 129 banks and 12,000 branches. In 2004, Germany, France, and Italy each had more than 30,000 branches - more than double the 15,000 branches in the United Kingdom.\n\n## Mergers and acquisitions\n\nBetween 1985 and 2018 banks engaged in around 28,798 mergers or acquisitions, either as the acquirer or the target company. The overall known value of these deals accumulates to around 5,169 bil. USD. In terms of value, there have been two major waves (1999 and 2007) which both peaked at around 460 bil. USD followed by a steep decline (-82% from 2007 until 2018).\n\nHere is a list of the largest deals in history in terms of value with participation from at least one bank:\n\n## Regulation",
+    "metadata": {
+      "char_start": 15826,
+      "char_end": 16703,
+      "unit_ids": [
+        "p_30",
+        "sec_19",
+        "p_31",
+        "p_32",
+        "sec_20"
+      ],
+      "unit_count": 5,
+      "metadata_recovery_failed": false
+    }
+  },
+  {
+    "chunk_id": "fixed_26",
+    "text": "Currently, commercial banks are regulated in most jurisdictions by government entities and require a special bank license to operate.\n\nUsually, the definition of the business of banking for the purposes of regulation is extended to include acceptance of deposits, even if they are not repayable to the customer's order - although money lending, by itself, is generally not included in the definition.\n\nUnlike most other regulated industries, the regulator is typically also a participant in the market, being either publicly or privately governed central commercial banks (such as the Bank of Scotland) issue their own banknotes but typically include:",
+    "metadata": {
+      "char_start": 16705,
+      "char_end": 17356,
+      "unit_ids": [
+        "p_33",
+        "p_34",
+        "p_35"
+      ],
+      "unit_count": 3,
+      "metadata_recovery_failed": false
+    }
+  },
+  {
+    "chunk_id": "fixed_27",
+    "text": "bank. Central banks also typically have a monopoly on the business of issuing banknotes. However, in some countries, this is not the case. In the UK, for example, the Financial Services Authority licenses banks, and some in addition to those issued by the Bank of England, the UK government's central bank. Image: https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Basel_-_Bank_f%C3%BCr_internationalen_Zahlungsausgleich1.jpg/250px-Basel_-_Bank_f%C3%BCr_internationalen_Zahlungsausgleich1.jpg Banking law is based on a contractual analysis of the relationship between the bank (defined above) and the customer - defined as any entity for which the bank agrees to conduct an account. The law implies rights and obligations into this relationship as follows: These implied contractual terms may be modified by express agreement between the customer and the bank. The statutes and regulations in force within a particular jurisdiction may also modify the above terms or create new rights,",
+    "metadata": {
+      "char_start": 17358,
+      "char_end": 18350,
+      "unit_ids": [
+        "p_36"
+      ],
+      "unit_count": 1,
+      "metadata_recovery_failed": false
+    }
+  },
+  {
+    "chunk_id": "fixed_28",
+    "text": "obligations, or limitations relevant to the bank-customer relationship. Some types of financial institutions, such as building societies and credit unions, may be partly or wholly exempt from bank license requirements, and therefore regulated under separate rules. The requirements for the issue of a bank license vary between jurisdictions",
+    "metadata": {
+      "char_start": 18351,
+      "char_end": 18691,
+      "unit_ids": [
+        "p_36"
+      ],
+      "unit_count": 1,
+      "metadata_recovery_failed": false
+    }
+  },
+  {
+    "chunk_id": "fixed_29",
+    "text": "## Different types of banking\n\nby the government, or are nonprofits.\n\n[Image: https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Toledo]\n\n%2C_city_of_opportunity-_a_chronicle_of_the_Northwest_territory_and_its_conquest_and_of_the_graci ous_city_stout_hearts_and_willing_hands_have_built_-_DPLA_-_7eb9ebf857dee23e40e999198de308c4_%28page_23%29_%28cropped %29.jpg/250px-thumbnail.jpg Most banks are profitmaking private enterprises. However, some are owned\n\n## Types of banks\n\n[Image: https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/NatBankRep.jpg/250px-NatBankRep.jpg]\n\n[Image: https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Nordea]\n\n%2C_Mariehamn%2C_2019_%2801%29.jpg/250px-Nordea%2C_Mariehamn %2C_2019_%2801%29.jpg\n\n[Image: https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/ATM\\_AL\\_RAJH]\n\nI_BANK.JPG/250px-ATM_AL_RAJHI_BANK.JPG\n\n[Image: https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/NatCuBank.jp]\n\ng/250px-NatCuBank.jpg",
+    "metadata": {
+      "char_start": 18693,
+      "char_end": 19662,
+      "unit_ids": [
+        "sec_21",
+        "p_37",
+        "img_15",
+        "p_38",
+        "sec_22",
+        "img_16",
+        "img_17",
+        "p_39",
+        "img_18",
+        "p_40",
+        "img_19",
+        "p_41"
+      ],
+      "unit_count": 12,
+      "metadata_recovery_failed": false
+    }
+  },
+  {
+    "chunk_id": "fixed_30",
+    "text": "## Types of investment banks Combination banks\n\n[Image: https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Avenida\\_Sao\\_J]\n\noao%2C_Sao_Paulo_2006.jpg/250px-Avenida_Sao_Joao %2C_Sao_Paulo_2006.jpg\n\n## Other types of banks\n\n## Challenges within the banking industry\n\ncontent.svg/60px-Ambox_globe_content.svg.png\n\n[Image: https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Ambox\\_globe\\_]\n\n## United States\n\nguarded in the world, with multiple specialized and focused regulators. All banks with FDIC-insured deposits have the Federal Deposit Insurance Corporation (FDIC) as a regulator. However, for soundness examinations (i.e., whether a bank is operating in a sound manner), the Federal Reserve is the primary federal regulator for Fed-member state banks; the Office of the Comptroller of the Currency (OCC) is the primary federal regulator for\n\n[Image: https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/People]",
+    "metadata": {
+      "char_start": 19664,
+      "char_end": 20598,
+      "unit_ids": [
+        "sec_23",
+        "img_20",
+        "p_42",
+        "sec_24",
+        "sec_25",
+        "p_43",
+        "img_21",
+        "sec_26",
+        "p_44",
+        "img_22"
+      ],
+      "unit_count": 10,
+      "metadata_recovery_failed": false
+    }
+  },
+  {
+    "chunk_id": "fixed_31",
+    "text": "[Image: https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Mirror\\_buildin]",
+    "metadata": {
+      "char_start": 20600,
+      "char_end": 20682,
+      "unit_ids": [
+        "img_23"
+      ],
+      "unit_count": 1,
+      "metadata_recovery_failed": false
+    }
+  },
+  {
+    "chunk_id": "fixed_32",
+    "text": "%27s_Trust_Company_Building_183_Montague_Street_Brooklyn.jpg/250pxPeople%27s_Trust_Company_Building_183_Montague_Street_Brooklyn.jpg The United States banking industry is one of the most heavily regulated and national banks. State non-member banks are examined by the state agencies as well as the FDIC.: 236 National banks have one primary regulator - the OCC. Each regulatory agency has its own set of rules and regulations to which banks and thrifts must adhere. The Federal Financial Institutions Examination Council (FFIEC) was established in 1979 as a formal interagency body empowered to prescribe uniform principles, standards, and report forms for the federal examination of financial institutions. Although the FFIEC has resulted in a greater degree of regulatory consistency between the agencies, the rules and regulations are constantly changing. In addition to changing regulations, changes in the industry have led to consolidations within the Federal Reserve, FDIC, OTS, and OCC.",
+    "metadata": {
+      "char_start": 20684,
+      "char_end": 21678,
+      "unit_ids": [
+        "p_45"
+      ],
+      "unit_count": 1,
+      "metadata_recovery_failed": false
+    }
+  },
+  {
+    "chunk_id": "fixed_33",
+    "text": "Offices have been closed, supervisory regions have been merged, staff levels have been reduced and budgets have been cut. The remaining regulators face an increased burden with an increased workload and more banks per regulator. While banks struggle to keep up with the changes in the regulatory environment, regulators struggle to manage their workload and effectively regulate their banks. The impact of these changes is that banks are receiving less hands-on assessment by the regulators, less time spent with each institution, and the potential for more problems slipping through the cracks, potentially resulting in an overall increase in bank failures across the United States. The changing economic environment has a significant impact on banks and thrifts as they struggle to effectively manage their interest rate spread in the face of low rates on loans, rate competition for deposits and the general market changes, industry trends and economic fluctuations. It has been a challenge for",
+    "metadata": {
+      "char_start": 21679,
+      "char_end": 22676,
+      "unit_ids": [
+        "p_45"
+      ],
+      "unit_count": 1,
+      "metadata_recovery_failed": false
+    }
+  },
+  {
+    "chunk_id": "fixed_34",
+    "text": "banks to effectively set their growth strategies with the recent economic market. A rising interest rate environment may seem to help financial institutions, but the effect of the changes on consumers and businesses is not predictable and the challenge remains for banks to grow and effectively manage the spread to generate a return to their shareholders. The management of the banks' asset portfolios also remains a challenge in today's economic environment. Loans are a bank's primary asset category and when loan quality becomes suspect, the foundation of a bank is shaken to the core. While always an issue for banks, declining asset quality has become a big problem for financial institutions. Image: g_%284004925857%29.jpg/250px-Mirror_building_%284004925857%29.jpg",
+    "metadata": {
+      "char_start": 22677,
+      "char_end": 23449,
+      "unit_ids": [
+        "p_45"
+      ],
+      "unit_count": 1,
+      "metadata_recovery_failed": false
+    }
+  },
+  {
+    "chunk_id": "fixed_35",
+    "text": "There are several reasons for this, one of which is the lax attitude some banks have adopted because of the years of \"good times.\" The potential for this is exacerbated by the reduction in the regulatory oversight of banks and in some cases depth of management. Problems are more likely to go undetected, resulting in a significant impact on the bank when they are discovered. In addition, banks, like any business, struggle to cut costs and have consequently eliminated certain expenses, such as adequate employee training programs. Banks also face a host of other challenges such as aging ownership groups. Across the country, many banks' management teams and boards of directors are aging. Banks also face ongoing pressure from shareholders, both public and private, to achieve earnings and growth projections. Regulators place added pressure on banks to manage the various categories of risk. Banking is also an extremely competitive industry. Competing in the financial services industry has",
+    "metadata": {
+      "char_start": 23451,
+      "char_end": 24447,
+      "unit_ids": [
+        "p_46"
+      ],
+      "unit_count": 1,
+      "metadata_recovery_failed": false
+    }
+  },
+  {
+    "chunk_id": "fixed_36",
+    "text": "become tougher with the entrance of such players as insurance agencies, credit unions, check cashing services, credit card companies, etc. As a reaction, banks have developed their activities in financial instruments, through financial market operations such as brokerage and have become big players in such activities. Another major challenge is the aging infrastructure, also called legacy IT. Backend systems were built decades ago and are incompatible with new applications. Fixing bugs and creating interfaces costs huge sums, as knowledgeable programmers become scarce.",
+    "metadata": {
+      "char_start": 24448,
+      "char_end": 25023,
+      "unit_ids": [
+        "p_46"
+      ],
+      "unit_count": 1,
+      "metadata_recovery_failed": false
+    }
+  },
+  {
+    "chunk_id": "fixed_37",
+    "text": "## Loan activities of banks\n\nof plans:\n\nTo be able to provide home buyers and builders with the funds needed, banks must compete for deposits. The phenomenon of disintermediation had to dollars moving from savings accounts and into direct market instruments such as U.S. Department of Treasury obligations, agency securities, and corporate debt. One of the greatest factors in recent years in the movement of deposits was the tremendous growth of money market funds whose higher interest rates attracted consumer deposits. To compete for deposits, US savings institutions offer many different types\n\n## Investment for the fossil fuel industry\n\nEven after The Paris Agreement has entered into force, large banks in developed countries are heavily financing the fossil fuel industry. This practice has been condemned as going against climate action.\n\n## Types of accounts",
+    "metadata": {
+      "char_start": 25025,
+      "char_end": 25894,
+      "unit_ids": [
+        "sec_27",
+        "p_47",
+        "p_48",
+        "sec_28",
+        "p_49",
+        "sec_29"
+      ],
+      "unit_count": 6,
+      "metadata_recovery_failed": false
+    }
+  },
+  {
+    "chunk_id": "fixed_38",
+    "text": "[Image: https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/BBTLexington.jpg/250px-BBTLexington.jpgBankstatementsareaccountingrecordsproducedbybanksunderthevariousaccountingstandardsoftheworld.UnderGAAPtherearetwokindsofaccounts:debitandcredit.CreditaccountsareRevenue,EquityandLiabilities.DebitAccountsareAssetsandExpenses.Thebankcreditsacreditaccounttoincreaseitsbalance,anddebitsacreditaccounttodecreaseitsbalance.Thecustomerdebitshisorhersavings/bank(asset)inhisledgerwhen]",
+    "metadata": {
+      "char_start": 25896,
+      "char_end": 26379,
+      "unit_ids": [
+        "img_24"
+      ],
+      "unit_count": 1,
+      "metadata_recovery_failed": false
+    }
+  },
+  {
+    "chunk_id": "fixed_39",
+    "text": "making a deposit (and the account is normally in debit), while the customer credits a credit card (liability) account in his ledger every time he spends money (and the account is normally in credit). When the customer reads his bank statement, the statement will show a credit to the account for deposits, and debits for withdrawals of funds. The customer with a positive balance will see this balance reflected as a credit balance on the bank statement. If the customer is overdrawn, he will have a negative balance, reflected as a debit balance on the bank statement.\n\n## Brokered deposits",
+    "metadata": {
+      "char_start": 26381,
+      "char_end": 26972,
+      "unit_ids": [
+        "p_50",
+        "sec_30"
+      ],
+      "unit_count": 2,
+      "metadata_recovery_failed": false
+    }
+  },
+  {
+    "chunk_id": "fixed_40",
+    "text": "One source of deposits for banks is deposit brokers who deposit large sums of money on behalf of investors through trust corporations. This money will generally go to the banks which offer the most favorable terms, often better than those offered local depositors. It is possible for a bank to engage in business with no local deposits at all, all funds being brokered deposits. Accepting a significant quantity of such deposits, or \"hot money\" as it is sometimes called, puts a bank in a difficult and sometimes risky position, as the funds must be lent or invested in a way that yields a return sufficient to pay the high interest being paid on the brokered deposits. This may result in risky decisions and even in eventual failure of the bank. Banks that failed in the United States during the 2008 financial crisis had, on average, four times more brokered deposits as a percent of their deposits than the average bank. Such deposits, combined with risky real estate investments, factored into",
+    "metadata": {
+      "char_start": 26974,
+      "char_end": 27971,
+      "unit_ids": [
+        "p_51"
+      ],
+      "unit_count": 1,
+      "metadata_recovery_failed": false
+    }
+  },
+  {
+    "chunk_id": "fixed_41",
+    "text": "the savings and loan crisis of the 1980s. Regulation of brokered deposits is opposed by banks on the grounds that the practice can be a source of external funding to growing communities with insufficient local deposits. There are different types of accounts: saving, recurring and current accounts.",
+    "metadata": {
+      "char_start": 27972,
+      "char_end": 28270,
+      "unit_ids": [
+        "p_51"
+      ],
+      "unit_count": 1,
+      "metadata_recovery_failed": false
+    }
+  },
+  {
+    "chunk_id": "fixed_42",
+    "text": "## Custodial accounts\n\nCustodial accounts are accounts in which assets are held for a third party. For example, businesses that accept custody of funds for clients prior to their conversion, return, or transfer may have a custodial account at a bank for these purposes.\n\n## Globalization",
+    "metadata": {
+      "char_start": 28272,
+      "char_end": 28559,
+      "unit_ids": [
+        "sec_31",
+        "p_52",
+        "sec_32"
+      ],
+      "unit_count": 3,
+      "metadata_recovery_failed": false
+    }
+  },
+  {
+    "chunk_id": "fixed_43",
+    "text": "In modern times there have been huge reductions to the barriers of global competition in the banking industry. Increases in telecommunications and other financial technologies, such as Bloomberg, have allowed banks to extend their reach all over the world since they no longer have to be near customers to manage both their finances and their risk. The growth in crossborder activities has also increased the demand for banks that can provide various services across borders to different nationalities. Despite these reductions in barriers and growth in cross-border activities, the banking industry is nowhere near as globalized as some other industries. In the US, for instance, very few banks even worry about the Riegle-Neal Act, which promotes more efficient interstate banking. In the vast majority of nations around the globe, the market share for foreign owned banks is currently less than a tenth of all market shares for banks in a particular nation. One reason the banking industry has",
+    "metadata": {
+      "char_start": 28561,
+      "char_end": 29557,
+      "unit_ids": [
+        "p_53"
+      ],
+      "unit_count": 1,
+      "metadata_recovery_failed": false
+    }
+  },
+  {
+    "chunk_id": "fixed_44",
+    "text": "not been fully globalized is that it is more convenient to have local banks provide loans to small businesses and individuals. On the other hand, for large corporations, it is not as important in what nation the bank is in since the corporation's financial information is available around the globe.",
+    "metadata": {
+      "char_start": 29558,
+      "char_end": 29857,
+      "unit_ids": [
+        "p_53"
+      ],
+      "unit_count": 1,
+      "metadata_recovery_failed": false
+    }
+  },
+  {
+    "chunk_id": "fixed_45",
+    "text": "There have been two significant attempts to overcome the industry's traditional focus on competing at the national level rather than the international level. In the 1980s, Citigroup and HSBC both began to develop large networks of retail bank branches in numerous countries around the world, in order to become global consumer banking brands. But in 2021, Citigroup initiated an exit from retail banking outside of its core U.S. market, while in 2022, HSBC initiated an exit from the U.S. retail market (except for its wealth management business) and then in 2023 put its retail operations in a dozen other countries under review for sale or closure. According to Wells Fargo, both banks were operating on the assumption that globalization would lead to the rise of large numbers of consumers who would regularly travel across borders for both work and play, but that \"global consumer customer never materialized\".",
+    "metadata": {
+      "char_start": 29859,
+      "char_end": 30773,
+      "unit_ids": [
+        "p_54"
+      ],
+      "unit_count": 1,
+      "metadata_recovery_failed": false
+    }
+  },
+  {
+    "chunk_id": "fixed_46",
+    "text": "[Image: https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Allcurrency-symbol.svg/20px-All-currency-symbol.svg.png]\n\n[Image: https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Bills\\_and\\_coins]\n\n.svg/40px-Bills_and_coins.svg.png\n\n## Further reading\n\n[Image: https://upload.wikimedia.org/wikipedia/en/thumb/8/8a/OOjs\\_UI\\_icon\\_edit-ltrprogressive.svg/20px-OOjs\\_UI\\_icon\\_edit-ltr-progressive.svg.png]\n\n[Image: https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Wiktionarylogo-en-v2.svg/40px-Wiktionary-logo-en-v2.svg.png]\n\n[Image: https://upload.wikimedia.org/wikipedia/en/thumb/4/4a/Commonslogo.svg/20px-Commons-logo.svg.png]\n\n[Image: https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Wikisourcelogo.svg/40px-Wikisource-logo.svg.png]\n\nImage: Image: Image:",
+    "metadata": {
+      "char_start": 30775,
+      "char_end": 31562,
+      "unit_ids": [
+        "img_25",
+        "img_26",
+        "p_55",
+        "sec_33",
+        "img_27",
+        "img_28",
+        "img_29",
+        "img_30",
+        "p_56"
+      ],
+      "unit_count": 9,
+      "metadata_recovery_failed": false
+    }
+  }
+]

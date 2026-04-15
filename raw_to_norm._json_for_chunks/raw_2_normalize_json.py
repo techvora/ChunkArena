@@ -267,4 +267,4 @@ def normalize_raw_json(input_path: str, output_path: str):
     print(f"   - Formulas: {formula_counter - 1}")
 
 if __name__ == "__main__":
-    normalize_raw_json("Banking_system_extraction.json", "Banking_system_normalized.json")
+    normalize_raw_json("data_extraction_from_source_file/Banking_system_extraction.json", "raw_to_norm._json_for_chunks/Banking_system_normalized.json")

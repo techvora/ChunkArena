@@ -2,6 +2,7 @@ import os
 import json
 import time
 from docling.document_converter import DocumentConverter
+from config import SOURCE_FILE, EXTRACTED_DATA_OUTPUT_DIR
 
 def process_complex_folder(folder_path):
     converter = DocumentConverter()
@@ -59,8 +60,8 @@ def process_complex_folder(folder_path):
     return documents
 
 if __name__ == "__main__":
-    SOURCE_PATH = "/home/root473/Documents/POC/ChunkArena/scrapped_data"
-    OUTPUT_FILE = "extracted_docs.json"
+    SOURCE_PATH = SOURCE_FILE
+    OUTPUT_FILE = EXTRACTED_DATA_OUTPUT_DIR
 
     docs = process_complex_folder(SOURCE_PATH)
     

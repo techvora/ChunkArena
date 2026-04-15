@@ -1,227 +1,159 @@
 # ChunkArena
 
-This repository benchmarks **chunking strategies** and **retrieval techniques** for a domain dataset (banking/finance), then produces an Excel report with retrieval-quality metrics and chunk-quality diagnostics.
+A controlled-variable benchmark of seven chunking strategies on the same
+corpus, the same retriever, the same reranker and the same golden
+dataset. Only the chunking method varies.
 
-## End-to-end flow (pipeline)
+## Chunking strategies compared
 
-At a high level, the system goes through these stages:
+1. fixed_size         RecursiveCharacterTextSplitter with overlap = 0
+2. overlapping        RecursiveCharacterTextSplitter with overlap > 0
+3. recursive          RecursiveCharacterTextSplitter (canonical config)
+4. sentence           Fixed number of sentences per chunk
+5. paragraph          One chunk per normalized paragraph unit
+6. header             MarkdownHeaderTextSplitter over H1, H2, H3
+7. semantic           langchain_experimental SemanticChunker with BGE-M3
 
-1. **Extract documents** (PDF/DOCX → markdown-like text + provenance)
-2. **Normalize** extracted text into **atomic units** (headings, paragraphs, tables, images, formulas)
-3. **Chunk** normalized units using multiple chunking methods
-4. **Index** chunks in **Qdrant** (one collection per chunking method)
-5. **Evaluate** retrieval across methods + techniques using a **golden dataset**
-6. **Export** results to `chunking_evaluation_full.xlsx`
+overlapping reuses the fixed_size splitter with a non-zero overlap.
+recursive has its own module with a richer separator ladder
+(sentence and clause terminators before space and raw character) and
+produces genuinely different chunks from fixed_size and overlapping.
 
-## What to run (typical sequence)
+## Retrieval techniques compared per strategy
 
-### 0) Environment
+- dense          Qdrant vector search with BGE-M3
+- hybrid         Dense + BM25 via Reciprocal Rank Fusion (k = 60)
+- dense_rerank   Dense top-N reranked by ms-marco MiniLM cross-encoder
+- hybrid_rerank  Hybrid top-N reranked by the same cross-encoder
 
-Create/activate a virtual environment before running scripts.
+## Metrics computed
 
-If you already have the existing environment used in this repo:
+- Hit@K
+- MRR
+- Precision@K
+- nDCG@K
+- Recall@K (span-level coverage: fraction of gold spans individually
+  covered by at least one chunk in top-K)
+- Avg Rank (with miss_rate companion)
+- Answer Rate (1 - miss_rate; dataset-level coverage)
+- Redundancy (mean pairwise cosine similarity in top-K)
+- Diversity (1 - Redundancy)
+- Boundary ratio
+- Token cost (tiktoken cl100k_base, sum over top-K per query, averaged)
+- Latency (wall-clock ms per retrieval call, averaged)
+- Context Relevance (embedding proxy: mean cosine query-to-chunks)
+- Faithfulness (embedding proxy: mean cosine chunks-to-gold-answer)
+- Answer Correctness (embedding proxy: mean of max cosine per gold
+  span against retrieved chunks)
+- Composite score (weighted combination of nDCG, MRR, Hit, Recall,
+  Precision). Token cost, latency and the RAG-quality proxies are
+  reported alongside but are not in the composite because their
+  weight depends on the deployment target.
+- Collection-level chunk stats (count, word distribution, seeded
+  random-sample collection redundancy)
 
-```bash
-source .chunk_bench/bin/activate
+Context Relevance, Faithfulness and Answer Correctness are embedding
+proxies for the canonical RAGAS metrics. They are honest retrieval-
+side upper bounds, not substitutes for LLM-judge generation metrics.
+See docs/metrics/rag_quality.md.
+
+## Repository layout
+
+```
+config.py                 All tunables in one place.
+chunkers/
+  base.py                 Text reconstruction, metadata map, BGE-M3
+                          load, SemanticChunker.
+  fixed_size.py           RecursiveCharacterTextSplitter (overlap=0).
+  recursive.py            RecursiveCharacterTextSplitter with a rich
+                          separator ladder (sentence and clause aware).
+  sentence.py             Sentence-grouped chunking via nltk Punkt.
+  paragraph.py            One chunk per paragraph unit.
+  header.py               MarkdownHeaderTextSplitter strategy.
+  semantic.py             SemanticChunker strategy.
+  __init__.py             Registry and dispatch.
+metrics/
+  embedding.py            Shared embedder and caches.
+  relevance.py            is_relevant predicate.
+  hit.py  mrr.py  precision.py  ndcg.py  recall.py  avg_rank.py
+  redundancy.py  boundary.py  token_cost.py  composite.py
+  rag_quality.py          Context Relevance, Faithfulness, Answer
+                          Correctness (embedding proxies).
+  __init__.py             Flat re-export.
+evaluation/
+  models.py               Cross-encoder and Qdrant client.
+  data_loader.py          Golden dataset loader.
+  chunk_store.py          Qdrant scroll plus BM25 index.
+  chunk_stats.py          Per-collection stats.
+  retrieval.py            dense, hybrid, rerank.
+  report_excel.py         8-sheet styled workbook.
+  runner.py               Orchestration.
+  __init__.py             Exposes run.
+chunking.py               Entrypoint: runs every chunker.
+evaluate.py               Entrypoint: runs the evaluation.
+docs/                     Per-file documentation mirroring the tree.
+created_chunks/           Output of chunking.py.
+Golden_dataset/           Input CSV for evaluate.py.
+vector_db/                Qdrant indexer script.
 ```
 
-Then install dependencies:
+Each file has a dedicated doc under docs/ with the same path: for
+example metrics/ndcg.py is documented at docs/metrics/ndcg.md.
 
-```bash
-pip install -r requirements.txt
-```
+## End-to-end pipeline
 
-### 1) Extraction (documents → `extracted_docs.json`)
+1. Extraction   extract_text.py converts PDFs and DOCX to markdown.
+2. Normalize    raw_2_normalize_json.py produces atomic units.
+3. Chunk        python chunking.py writes one JSON per method under
+                created_chunks/.
+4. Index        python vector_db/qdrant_db.py creates one Qdrant
+                collection per method at localhost:6333.
+5. Evaluate     python evaluate.py runs the benchmark and writes the
+                four output artifacts.
 
-Script: `extract_text.py`
+## Output artifacts
 
-- **Purpose**: uses `docling` to convert `.pdf`/`.docx` into markdown and stores provenance (filesystem + internal metadata).
-- **Output**: `extracted_docs.json`
+- raw_results.csv        per (question, method, technique) row
+- chunk_stats.csv        per method chunk quality snapshot
+- summary.csv            aggregated and ranked scores with verdicts
+- benchmark_report.xlsx  3-sheet focused report:
+    1. Experiment Matrix  one row per (method, technique) with
+                          Experiment ID, Retriever, Chunker,
+                          Chunk Size, Overlap, Top-K, Recall,
+                          Precision, MRR, Hit Rate, Context
+                          Relevance, Faithfulness, Answer
+                          Correctness, Token Cost, Latency,
+                          Redundancy, Notes
+    2. Raw Results        per-question drilldown with every metric
+    3. Heatmap            per-method visual matrix filtered to
+                          hybrid_rerank
 
-Important: this script points at a `scrapped_data/` folder by default. If you use it, set `SOURCE_PATH` to your real input folder.
+## Configuration
 
-### 2) Normalization (raw extraction → `Banking_system_normalized.json`)
+Every tunable lives in config.py: paths, K values, thresholds,
+composite weights, method list. Change a value there and both scripts
+pick it up.
 
-Script: `raw_2_normalize_json.py`
+## How to add a new chunker
 
-- **Input**: `Banking_system_extraction.json`
-- **Output**: `Banking_system_normalized.json`
-- **Idea**: convert the raw markdown-ish text into a clean list of atomic units:
-  - `heading` (with heading level)
-  - `paragraph`
-  - `table` (markdown table captured as a block)
-  - `image` (URLs / placeholders)
-  - `formula` (LaTeX-like math, with a rule to avoid misclassifying currency)
+1. Create chunkers/mymethod.py with a function that takes units and
+   returns a list of chunk dicts.
+2. Import it in chunkers/__init__.py and add it to CHUNKER_REGISTRY.
+3. Add the name to config.CHUNK_METHODS.
+4. If the chunker takes parameters, add a branch in chunking.py.
+5. Write docs/chunkers/mymethod.md.
 
-Run:
+## How to add a new metric
 
-```bash
-python raw_2_normalize_json.py
-```
+1. Create metrics/mymetric.py with a pure function.
+2. Import and re-export it from metrics/__init__.py.
+3. Wire it into the main loop in evaluation/runner.py and add a
+   column to the summary aggregation if needed.
+4. Write docs/metrics/mymetric.md.
 
-### 3) Chunking (normalized units → `created_chunks/chunks_<method>.json`)
+## Prerequisites
 
-Script: `chunking.py`
-
-- **Input**: `Banking_system_normalized.json`
-- **Output directory**: `created_chunks/`
-- **Chunking methods produced**:
-  - `fixed_size`
-  - `overlapping`
-  - `sentence`
-  - `paragraph`
-  - `recursive`
-  - `header`
-  - `semantic`
-
-Run:
-
-```bash
-python chunking.py
-```
-
-Notes on key design choices:
-- **Metadata preservation**: `chunking.py` reconstructs a full text and builds a character-offset map so each chunk can carry metadata like covered unit IDs and approximate source offsets.
-- **Semantic chunking**: uses LangChain’s `SemanticChunker` with BGE-M3 embeddings so chunk boundaries follow semantic breakpoints rather than fixed characters.
-
-### 4) Indexing (chunks → Qdrant collections)
-
-Script: `vector_db/qdrant_db.py`
-
-- **Purpose**: embeds each chunk using `BAAI/bge-m3` and upserts it into Qdrant.
-- **Index layout**: one Qdrant collection per chunking method (e.g., `fixed_size`, `semantic`, etc.).
-- **Vector size**: 1024 (BGE-M3 dense embedding dimension).
-
-Run:
-
-```bash
-python vector_db/qdrant_db.py
-```
-
-Prerequisite: Qdrant must be running on `localhost:6333` (as used in both indexing and evaluation).
-
-### 5) Evaluation (retrieval benchmarking → `chunking_evaluation_full.xlsx`)
-
-Script: `evaluate.py`
-
-- **Golden dataset input**: `Golden_dataset/Banking_system.csv`
-  - Expected columns: `Question`, `Answer`, `Facts`, `Topic`
-- **Output**: `chunking_evaluation_full.xlsx`
-
-Run:
-
-```bash
-python evaluate.py
-```
-
-## Evaluation: techniques used
-
-For **each chunking method** (each Qdrant collection), `evaluate.py` tests multiple retrieval pipelines:
-
-1. **Dense**
-   - Qdrant vector search using the query embedding.
-2. **Hybrid**
-   - Dense retrieval + BM25 lexical scoring, fused by a weighted sum (linear fusion).
-3. **Dense + Rerank**
-   - Dense top-N retrieval, then rerank with a cross-encoder.
-4. **Hybrid + Rerank**
-   - Hybrid top-N retrieval, then rerank with a cross-encoder.
-
-Models:
-- **Embedder**: `SentenceTransformer("BAAI/bge-m3")`
-- **Reranker**: `CrossEncoder("cross-encoder/ms-marco-MiniLM-L-6-v2")`
-
-## Evaluation: how metrics are computed in this repo
-
-### Short evaluation summary
-
-`evaluate.py` evaluates retrieval quality by using `Golden_dataset/Banking_system.csv` as the source of **queries** (`Question`) and **ground truth** (`Answer + Facts`). For each chunking method, it queries the corresponding **Qdrant collection** and computes IR-style metrics based on a semantic relevance heuristic:
-
-- A retrieved chunk is considered **relevant** if its cosine similarity to the ground truth text (BGE-M3 embeddings) is at least **0.65**.
-- Retrieval techniques compared per chunking method: **Dense**, **Hybrid (Dense+BM25 fusion)**, **Dense + Rerank**, **Hybrid + Rerank**.
-- Metrics computed per query then averaged: Recall@K/HitRate@K, Precision@K, MRR, nDCG@K, plus diagnostics like redundancy, semantic coherence, context completeness, boundary accuracy, and chunk entropy.
-- Outputs are exported to `chunking_evaluation_full.xlsx` (one sheet per chunking method, plus thresholds and a best-per-metric summary).
-
-### Core idea: “semantic relevance” labeling
-
-This code does not rely on pre-labeled chunk IDs. Instead, it defines a chunk as “relevant” if it is **semantically similar** to the ground truth text.
-
-1. Build ground truth text as:
-   - `truth_text = (Answer + " " + Facts).lower()`
-2. Compute embeddings for:
-   - the retrieved chunk text
-   - the ground truth text
-3. Compute cosine similarity.
-4. Mark relevant if similarity ≥ **0.65** (default threshold in `evaluate.py`).
-
-That relevance test is then used to compute standard IR metrics.
-
-### Retrieval-quality metrics (range: 0 to 1)
-
-Computed using the relevance test above:
-
-- **Recall@K**: 1 if any of top-K is relevant, else 0 (then averaged across queries).
-- **Hit Rate@K**: identical to Recall@K in this code.
-- **Precision@K**: (# relevant in top-K) / K.
-- **MRR**: reciprocal rank of the first relevant result; 0 if none are relevant.
-- **nDCG@K**: discounted gain with binary relevance, normalized by ideal DCG.
-
-### Chunk-quality / context metrics
-
-These help diagnose chunking behavior beyond “did we retrieve something relevant?”
-
-- **Redundancy** (lower is better)
-  - Average pairwise **Jaccard overlap** between the top-K chunks’ word sets.
-  - Interprets “many near-duplicates in top-K” as undesirable.
-- **Semantic coherence** (higher is better)
-  - Average cosine similarity between the query embedding and each of the top-K chunk embeddings.
-  - Useful for “are the retrieved chunks consistently about the query?”
-- **Context completeness** (higher is better)
-  - Ground truth is split into multiple “must-cover” sentences (Answer + comma-split Facts).
-  - Measures the fraction of those sentences that are semantically covered by at least one retrieved chunk in top-K.
-- **Boundary accuracy** (higher is better)
-  - Fraction of top-K chunks that end with `.`, `!`, or `?`.
-  - A proxy for clean chunk boundaries (heuristic).
-- **Chunk entropy** (context-dependent; see below)
-  - Shannon entropy of word distribution across the top-K chunks.
-  - Higher often indicates more diverse information; very low can indicate repetitive boilerplate.
-
-## What is a “good” score? (project thresholds)
-
-`evaluate.py` writes a `Target_Thresholds` sheet into the output Excel file. These are the threshold bands used by this project:
-
-| Metric | Poor | Acceptable | Good | Excellent |
-|---|---:|---:|---:|---:|
-| Recall@5 | <0.3 | 0.3–0.5 | 0.5–0.7 | >0.7 |
-| Precision@5 | <0.2 | 0.2–0.4 | 0.4–0.6 | >0.6 |
-| MRR | <0.3 | 0.3–0.5 | 0.5–0.7 | >0.7 |
-| nDCG@5 | <0.3 | 0.3–0.5 | 0.5–0.7 | >0.7 |
-| Hit Rate@5 | <0.4 | 0.4–0.6 | 0.6–0.8 | >0.8 |
-| Redundancy (lower better) | >0.2 | 0.1–0.2 | 0.05–0.1 | <0.05 |
-| Semantic coherence | <0.5 | 0.5–0.6 | 0.6–0.7 | >0.7 |
-| Context completeness | <0.3 | 0.3–0.5 | 0.5–0.7 | >0.7 |
-| Boundary accuracy | <0.5 | 0.5–0.7 | 0.7–0.9 | >0.9 |
-| Chunk entropy | <5 | 5–7 | 7–9 | >9 |
-
-Practical interpretation:
-- If you care about **answering correctly**, prioritize **Recall@K / HitRate@K / MRR / nDCG**.
-- If you care about **clean chunking behavior**, watch **Redundancy, Context completeness, Boundary accuracy**.
-- Treat **Chunk entropy** as a diagnostic: “excellent > 9” is a project heuristic and may vary heavily by domain and chunk size.
-
-## Output: what’s inside `chunking_evaluation_full.xlsx`
-
-The evaluator writes:
-
-- **One sheet per chunking method** (`fixed_size`, `semantic`, etc.)
-  - Rows = retrieval techniques
-  - Columns = metrics
-- **`Target_Thresholds`**
-  - The threshold table above
-- **`Best_Per_Metric`**
-  - For each method+metric, the single best technique and its value
-
-## Repository notes / constraints
-
-- Qdrant is assumed at `localhost:6333`.
-- The evaluation script currently uses an **absolute path** for the golden CSV. If you move the repo, update `csv_path` in `evaluate.py` accordingly.
-- Some scripts reference excluded folders (e.g., `scrapped_data/`) by default; adjust paths for your environment.
+- Qdrant running at localhost:6333.
+- BGE-M3 and ms-marco MiniLM cross-encoder downloadable by
+  sentence-transformers.
+- Dependencies in requirements.txt.
