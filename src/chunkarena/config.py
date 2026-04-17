@@ -89,15 +89,26 @@ CHUNK_OUTPUT_DIR = str(DATA_DIR / "gold" / "chunks" / "Central_banks")
 CHUNKS_PATH = CHUNK_OUTPUT_DIR
 
 # ---- Qdrant collection names for create new collection and use in evaluation ----
+# Derived automatically: {dataset}_{method_prefix}_v{version}
+# e.g. "central_banks_fixed_v1", "central_banks_semantic_v1"
+
+COLLECTION_VERSION = int(os.getenv("CHUNKARENA_COLL_VERSION", "1"))
+
+_DATASET_NAME = Path(SOURCE_FILE).stem.lower()
+
+_METHOD_PREFIX = {
+    "fixed_size":  "fixed",
+    "overlapping": "overlap",
+    "sentence":    "sent",
+    "paragraph":   "para",
+    "recursive":   "recur",
+    "header":      "header",
+    "semantic":    "semantic",
+}
 
 _COLLECTION_DEFAULTS = {
-    "fixed_size":  "fixed_size_v4",
-    "overlapping": "overlapping_v4",
-    "sentence":    "sentence_v4",
-    "paragraph":   "paragraph_v4",
-    "recursive":   "recursive_v4",
-    "header":      "header_v4",
-    "semantic":    "semantic_v4",
+    method: f"{_DATASET_NAME}_{prefix}_v{COLLECTION_VERSION}"
+    for method, prefix in _METHOD_PREFIX.items()
 }
 COLLECTION_NAMES = {
     method: os.getenv(f"CHUNKARENA_COLL_{method.upper()}", default)
