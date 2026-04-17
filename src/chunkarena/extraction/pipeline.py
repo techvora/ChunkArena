@@ -20,6 +20,55 @@ import time
 from docling.document_converter import DocumentConverter
 from chunkarena.config import SOURCE_FILE, EXTRACTED_DATA_OUTPUT_DIR
 
+def process_single_file(file_path):
+    """Extract structured content from a single PDF/DOCX file.
+
+    Args:
+        file_path: Absolute or relative path to the source document.
+
+    Returns:
+        Dict with ``content`` (markdown string) and ``provenance`` metadata.
+    """
+    converter = DocumentConverter()
+
+    if not os.path.exists(file_path):
+        raise FileNotFoundError(f"Source file not found: {file_path}")
+
+    filename = os.path.basename(file_path)
+    print(f"Processing: {filename}...")
+
+    file_stats = os.stat(file_path)
+    file_metadata = {
+        "filename": filename,
+        "file_path": os.path.abspath(file_path),
+        "file_size_bytes": file_stats.st_size,
+        "created_at": time.ctime(file_stats.st_ctime),
+        "modified_at": time.ctime(file_stats.st_mtime),
+        "extension": filename.split(".")[-1].lower()
+    }
+
+    result = converter.convert(file_path)
+    md_content = result.document.export_to_markdown()
+
+    internal_metadata = {}
+    if hasattr(result.document, 'origin') and result.document.origin:
+        internal_metadata = result.document.origin.dict()
+
+    print(f"Done: {filename}")
+
+    return {
+        "content": md_content,
+        "provenance": {
+            "file_system": file_metadata,
+            "document_internal": internal_metadata,
+            "extraction_info": {
+                "engine": "Docling",
+                "pages": len(result.document.pages) if hasattr(result.document, 'pages') else "N/A"
+            }
+        }
+    }
+
+
 def process_complex_folder(folder_path):
     """Extract structured content from every PDF/DOCX file in a folder.
 

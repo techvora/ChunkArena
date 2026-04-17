@@ -1,17 +1,19 @@
 """Excel report builder.
 
-Writes a focused 3-sheet benchmark workbook:
+Writes a single consolidated 3-sheet benchmark workbook:
 
     Experiment Matrix  Flat result table with one row per (method,
-                       technique) in the requested layout.
+                       technique) including chunk quality stats,
+                       retrieval metrics, and auto-generated notes.
     Raw Results        Per-question per-technique scores for drilldown.
-    Heatmap            Per-method metric matrix filtered to
-                       hybrid_rerank with color scales for visual
+    Heatmap            All techniques x all methods sorted by composite
+                       score (high to low) with color scales for visual
                        comparison.
 
-The top-level function build_workbook takes the summary and raw
+The top-level function build_workbook takes the summary, raw, and stats
 dataframes produced by the runner and saves the styled report to
-BENCHMARK_XLSX.
+BENCHMARK_XLSX. This is the sole output artifact — no separate CSV files
+are generated.
 """
 
 from openpyxl import Workbook
@@ -19,7 +21,8 @@ from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
 from openpyxl.utils import get_column_letter
 from openpyxl.formatting.rule import ColorScaleRule
 
-from chunkarena.config import BENCHMARK_XLSX
+from pathlib import Path
+from chunkarena.config import BENCHMARK_XLSX, GOLDEN_DATASET_PATH
 
 
 DARK_BLUE  = "1F3864"
@@ -70,13 +73,13 @@ def col_widths(ws, widths):
         ws.column_dimensions[get_column_letter(col)].width = w
 
 
-def build_workbook(summary_df, raw_df, final_k, method_params=None):
+def build_workbook(summary_df, raw_df, final_k, method_params=None, stats_df=None):
     print("\nBuilding Excel report...")
 
     wb = Workbook()
     wb.remove(wb.active)
 
-    _build_experiment_matrix_sheet(wb, summary_df, final_k, method_params or {})
+    _build_experiment_matrix_sheet(wb, summary_df, final_k, method_params or {}, stats_df)
     _build_raw_results_sheet(wb, raw_df)
     _build_heatmap_sheet(wb, summary_df)
 
@@ -84,18 +87,38 @@ def build_workbook(summary_df, raw_df, final_k, method_params=None):
     print(f"\nExcel report saved -> {BENCHMARK_XLSX}")
 
 
-def _build_experiment_matrix_sheet(wb, summary_df, final_k, method_params):
+def _build_experiment_matrix_sheet(wb, summary_df, final_k, method_params, stats_df=None):
     ws = wb.create_sheet("Experiment Matrix")
+
+    # Dataset info banner row
+    _ds_name = Path(GOLDEN_DATASET_PATH).stem
+    n_header_cols = 26  # total header columns
+    ws.merge_cells(start_row=1, start_column=1, end_row=1, end_column=n_header_cols)
+    c = ws.cell(row=1, column=1, value=f"Golden Dataset: {_ds_name}")
+    c.font = Font(name="Arial", size=12, bold=True, color=DARK_BLUE)
+    c.alignment = la()
+    ws.row_dimensions[1].height = 26
 
     headers = [
         "Experiment ID", "Retriever Method", "Chunking Method",
         "Chunk Size", "Overlap (%)", "Top-K",
-        "Recall@K", "Precision@K", "MRR", "Hit Rate", "Answer Rate",
+        # --- Chunk stats (from stats_df) ---
+        "Num Chunks", "Avg Words", "Std Words",
+        "Min Words", "Max Words", "Median Words",
+        "Corpus Boundary", "Corpus Redundancy",
+        # --- Retrieval metrics ---
+        "Recall@K", "Precision@K", "MRR", "nDCG@K", "Hit Rate",
         "Context Relevance", "Faithfulness", "Answer Correctness",
         "Token Cost", "Latency (ms)", "Redundancy Score", "Notes",
     ]
-    hrow(ws, 1, headers)
-    ws.row_dimensions[1].height = 32
+    hrow(ws, 2, headers)
+    ws.row_dimensions[2].height = 32
+
+    # Build a method -> chunk stats lookup
+    stats_lookup = {}
+    if stats_df is not None:
+        for _, srow in stats_df.iterrows():
+            stats_lookup[srow["method"]] = srow
 
     df = summary_df.sort_values(
         ["technique", "composite_score"], ascending=[True, False]
@@ -116,9 +139,13 @@ def _build_experiment_matrix_sheet(wb, summary_df, final_k, method_params):
             parts.append("redundant")
         return ", ".join(parts)
 
-    for r_idx, row in enumerate(df.itertuples(index=False), 2):
-        exp_id = f"EXP-{r_idx - 1:02d}"
+    # Column indices for left-aligned text columns
+    text_cols = {2, 3, len(headers)}  # Retriever Method, Chunking Method, Notes
+
+    for r_idx, row in enumerate(df.itertuples(index=False), 3):
+        exp_id = f"EXP-{r_idx - 2:02d}"
         params = method_params.get(row.method, {"chunk_size": "-", "overlap_pct": "-"})
+        st = stats_lookup.get(row.method, {})
 
         vals = [
             exp_id,
@@ -127,11 +154,21 @@ def _build_experiment_matrix_sheet(wb, summary_df, final_k, method_params):
             params.get("chunk_size", "-"),
             params.get("overlap_pct", "-"),
             final_k,
+            # Chunk stats
+            int(st.get("num_chunks", 0)) if st is not None and len(st) else "-",
+            round(st.get("avg_words", 0), 2) if st is not None and len(st) else "-",
+            round(st.get("std_words", 0), 2) if st is not None and len(st) else "-",
+            int(st.get("min_words", 0)) if st is not None and len(st) else "-",
+            int(st.get("max_words", 0)) if st is not None and len(st) else "-",
+            round(st.get("median_words", 0), 2) if st is not None and len(st) else "-",
+            round(st.get("boundary_ratio", 0), 4) if st is not None and len(st) else "-",
+            round(st.get("collection_redundancy", 0), 4) if st is not None and len(st) else "-",
+            # Retrieval metrics
             round(row.recall_at_k, 4),
             round(row.precision_at_k, 4),
             round(row.mrr, 4),
+            round(row.ndcg_at_k, 4),
             round(row.hit_at_k, 4),
-            round(row.answer_rate, 4),
             round(row.context_relevance, 4),
             round(row.faithfulness, 4),
             round(row.answer_correctness, 4),
@@ -145,25 +182,25 @@ def _build_experiment_matrix_sheet(wb, summary_df, final_k, method_params):
         for c_idx, val in enumerate(vals, 1):
             c = ws.cell(row=r_idx, column=c_idx, value=val)
             c.font = bfont(size=9, bold=(c_idx <= 3))
-            c.alignment = la() if c_idx in [2, 3, 18] else ca()
+            c.alignment = la() if c_idx in text_cols else ca()
             c.border = tborder()
             if alt:
                 c.fill = alt
 
-    ws.freeze_panes = "D2"
+    ws.freeze_panes = "D3"
 
-    n_rows = len(df) + 1
-    # Higher better: Recall, Precision, MRR, Hit, Answer Rate,
-    # Context Relevance, Faithfulness, Answer Correctness
-    for col_letter in ["G", "H", "I", "J", "K", "L", "M", "N"]:
+    n_rows = len(df) + 2
+    # Higher better: Recall(O), Precision(P), MRR(Q), nDCG(R), Hit(S),
+    # Context Relevance(T), Faithfulness(U), Answer Correctness(V)
+    for col_letter in ["O", "P", "Q", "R", "S", "T", "U", "V"]:
         ws.conditional_formatting.add(
             f"{col_letter}2:{col_letter}{n_rows}",
             ColorScaleRule(start_type="min", start_color="F8696B",
                            mid_type="percentile", mid_value=50, mid_color="FFEB84",
                            end_type="max", end_color="63BE7B")
         )
-    # Lower better: Token Cost, Latency, Redundancy
-    for col_letter in ["O", "P", "Q"]:
+    # Lower better: Token Cost(W), Latency(X), Redundancy Score(Y)
+    for col_letter in ["W", "X", "Y"]:
         ws.conditional_formatting.add(
             f"{col_letter}2:{col_letter}{n_rows}",
             ColorScaleRule(start_type="min", start_color="63BE7B",
@@ -171,7 +208,12 @@ def _build_experiment_matrix_sheet(wb, summary_df, final_k, method_params):
                            end_type="max", end_color="F8696B")
         )
 
-    col_widths(ws, [12, 16, 16, 12, 12, 7, 10, 12, 9, 10, 12, 16, 13, 18, 12, 14, 14, 32])
+    col_widths(ws, [
+        12, 16, 16, 12, 12, 7,           # ID, Retriever, Method, Size, Overlap, K
+        12, 11, 11, 11, 11, 13, 14, 16,  # Chunk stats
+        10, 12, 9, 10, 10, 16, 13, 18,   # Retrieval metrics (Recall, Prec, MRR, nDCG, Hit, CR, Faith, AC)
+        12, 14, 14, 32,                   # Cost, Latency, Redundancy, Notes
+    ])
 
 
 def _build_raw_results_sheet(wb, raw_df):
@@ -180,7 +222,7 @@ def _build_raw_results_sheet(wb, raw_df):
 
     raw_cols = ["Method", "Technique", "Q_ID", "Question",
                 "Hit@K", "MRR", "Precision@K", "nDCG@K", "Recall@K",
-                "Avg Rank", "Miss", "Redundancy", "Diversity", "Boundary",
+                "Avg Rank", "Redundancy", "Boundary",
                 "Context Relevance", "Faithfulness", "Answer Correctness",
                 "Token Cost", "Latency (ms)"]
     hrow(ws, 1, raw_cols)
@@ -188,7 +230,7 @@ def _build_raw_results_sheet(wb, raw_df):
     raw_disp = raw_df[[
         "method", "technique", "question_id", "question",
         "hit@k", "mrr", "precision@k", "ndcg@k", "recall@k",
-        "avg_rank", "miss", "redundancy", "diversity", "boundary",
+        "avg_rank", "redundancy", "boundary",
         "context_relevance", "faithfulness", "answer_correctness",
         "token_cost", "latency_ms"
     ]]
@@ -203,7 +245,7 @@ def _build_raw_results_sheet(wb, raw_df):
             if alt:
                 c.fill = alt
 
-    col_widths(ws, [14, 16, 6, 50, 8, 8, 12, 9, 10, 10, 7, 12, 10, 10, 16, 13, 18, 12, 14])
+    col_widths(ws, [14, 16, 6, 50, 8, 8, 12, 9, 10, 10, 12, 10, 16, 13, 18, 12, 14])
     ws.row_dimensions[1].height = 28
 
 
@@ -217,44 +259,52 @@ def _build_heatmap_sheet(wb, summary_df):
                      "Context Relev.", "Faithfulness", "Answer Correct.",
                      "Redundancy", "Composite"]
 
-    heat_data = summary_df[summary_df["technique"] == "hybrid_rerank"].copy()
-    if len(heat_data) == 0:
-        heat_data = summary_df.groupby("method").first().reset_index()
+    # All techniques × all methods, sorted by composite score (high → low)
+    heat_data = summary_df.sort_values(
+        "composite_score", ascending=False
+    ).reset_index(drop=True)
 
-    ws.merge_cells("A1:K1")
+    n_cols = 2 + len(m_labels_heat)  # Method + Technique + metrics
+    ws.merge_cells(start_row=1, start_column=1, end_row=1, end_column=n_cols)
     c = ws["A1"]
-    c.value = "Performance heatmap (technique: hybrid_rerank)"
+    _ds_name = Path(GOLDEN_DATASET_PATH).stem
+    c.value = f"Performance Heatmap — {_ds_name} — All Techniques (sorted by Composite Score)"
     c.font = Font(name="Arial", size=13, bold=True, color=DARK_BLUE)
     c.alignment = ca()
     ws.row_dimensions[1].height = 28
 
-    hrow(ws, 2, ["Method"] + m_labels_heat)
+    hrow(ws, 2, ["Method", "Technique"] + m_labels_heat)
 
     for r_idx, row in enumerate(heat_data.itertuples(index=False), 3):
         c = ws.cell(row=r_idx, column=1, value=row.method)
         c.font = bfont(bold=True); c.border = tborder(); c.alignment = la()
-        for ci, met in enumerate(metrics_heat, 2):
+        c = ws.cell(row=r_idx, column=2, value=row.technique)
+        c.font = bfont(); c.border = tborder(); c.alignment = la()
+        for ci, met in enumerate(metrics_heat, 3):
             val = getattr(row, met)
             cell = ws.cell(row=r_idx, column=ci, value=round(val, 4))
             cell.font = bfont(); cell.alignment = ca(); cell.border = tborder()
         ws.row_dimensions[r_idx].height = 20
 
     n_heat = len(heat_data)
-    # Higher better: columns 2..9 (Hit through Answer Correct.) and column 11 (Composite)
-    for ci in list(range(2, 10)) + [11]:
+    data_start = 3
+    data_end = n_heat + 2
+    # Higher better: columns 3..10 (Hit through Answer Correct.) and column 12 (Composite)
+    for ci in list(range(3, 11)) + [12]:
         cl = get_column_letter(ci)
         ws.conditional_formatting.add(
-            f"{cl}3:{cl}{n_heat + 2}",
+            f"{cl}{data_start}:{cl}{data_end}",
             ColorScaleRule(start_type="min", start_color="F8696B",
                            mid_type="percentile", mid_value=50, mid_color="FFEB84",
                            end_type="max", end_color="63BE7B")
         )
-    # Lower better: column 10 (Redundancy)
+    # Lower better: column 11 (Redundancy)
+    cl = get_column_letter(11)
     ws.conditional_formatting.add(
-        f"J3:J{n_heat + 2}",
+        f"{cl}{data_start}:{cl}{data_end}",
         ColorScaleRule(start_type="min", start_color="63BE7B",
                        mid_type="percentile", mid_value=50, mid_color="FFEB84",
                        end_type="max", end_color="F8696B")
     )
 
-    col_widths(ws, [18, 10, 10, 12, 10, 10, 14, 12, 16, 12, 12])
+    col_widths(ws, [18, 16, 10, 10, 12, 10, 10, 14, 12, 16, 12, 12])

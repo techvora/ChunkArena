@@ -284,8 +284,10 @@ def normalize_raw_json(input_path: str, output_path: str):
 
 if __name__ == "__main__":
     import os
-    from chunkarena.config import EXTRACTED_DATA_OUTPUT_DIR, NORMALIZED_FILE
+    from pathlib import Path
+    from chunkarena.config import EXTRACTED_DATA_OUTPUT_DIR, NORMALIZED_FILE, SOURCE_FILE
+    source_stem = Path(SOURCE_FILE).stem
     normalize_raw_json(
-        os.path.join(EXTRACTED_DATA_OUTPUT_DIR, "Banking_system_extraction.json"),
+        os.path.join(EXTRACTED_DATA_OUTPUT_DIR, f"{source_stem}_extraction.json"),
         NORMALIZED_FILE,
     )

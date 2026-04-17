@@ -27,6 +27,7 @@ import os
 from typing import List, Dict, Any
 from chunkarena.config import (
     CHUNKS_PATH,
+    COLLECTION_NAMES,
     DEVICE,
     EMBEDDING_MODEL,
     EMBEDDING_DIMENSION,
@@ -68,28 +69,24 @@ class QdrantVectorDB:
         self,
         chunks: List[Dict],
         index_name: str,
-        if_exists: str = "version",
+        if_exists: str = "skip",
     ) -> str:
-        """Create or version a Qdrant collection and index a chunk set.
+        """Create a Qdrant collection and index a chunk set.
 
-        Sanitizes ``index_name``, then applies the requested collision
-        policy if the collection already exists. Builds the collection
-        with cosine distance at :data:`config.EMBEDDING_DIMENSION`,
-        encodes every chunk with the shared SentenceTransformer (batch
-        size 12, normalized vectors) and upserts the points in batches
-        of 256 with a payload carrying ``chunk_id``, ``text``,
-        ``metadata`` and optional ``source_doc``.
+        The collection name is driven by config.COLLECTION_NAMES so
+        callers control the exact name (including any version suffix like
+        ``_v2``, ``_v3``) from a single place. Existing collections are
+        never deleted unless the caller explicitly passes
+        ``if_exists="overwrite"``.
 
         Args:
             chunks: Chunk dicts with ``chunk_id``, ``text`` and
                 ``metadata`` keys.
-            index_name: Human-readable collection name; usually a
-                chunking-method identifier.
-            if_exists: Collision policy when the base collection already
-                exists. One of ``"version"`` (create ``<name>_v2``,
-                ``_v3``, ... — the default), ``"overwrite"`` (drop and
-                recreate), ``"skip"`` (leave existing collection alone
-                and return its name) or ``"error"``.
+            index_name: Collection name from config; sanitized internally.
+            if_exists: Collision policy when the collection already
+                exists. ``"skip"`` (leave existing collection alone and
+                return its name — the default), ``"overwrite"`` (drop and
+                recreate) or ``"error"``.
 
         Returns:
             The actual collection name that points were written to.
@@ -99,20 +96,17 @@ class QdrantVectorDB:
                 collection exists, or if ``if_exists`` is not one of the
                 supported modes.
         """
-        base_name = self._sanitize_name(index_name)
-        collection_name = base_name
+        collection_name = self._sanitize_name(index_name)
 
-        if self.client.collection_exists(base_name):
-            if if_exists == "overwrite":
-                self.client.delete_collection(collection_name=base_name)
-            elif if_exists == "skip":
-                print(f"Collection '{base_name}' already exists, skipping.")
-                return base_name
+        if self.client.collection_exists(collection_name):
+            if if_exists == "skip":
+                print(f"Collection '{collection_name}' already exists, skipping.")
+                return collection_name
+            elif if_exists == "overwrite":
+                self.client.delete_collection(collection_name=collection_name)
+                print(f"Collection '{collection_name}' dropped for overwrite.")
             elif if_exists == "error":
-                raise ValueError(f"Collection '{base_name}' already exists.")
-            elif if_exists == "version":
-                collection_name = self._next_version_name(base_name)
-                print(f"Collection '{base_name}' exists — writing new version '{collection_name}'.")
+                raise ValueError(f"Collection '{collection_name}' already exists.")
             else:
                 raise ValueError(f"Unknown if_exists mode: {if_exists!r}")
 
@@ -159,27 +153,6 @@ class QdrantVectorDB:
             torch.cuda.empty_cache()
         print(f"Collection '{collection_name}' populated with {len(points)} points.")
         return collection_name
-
-    def _next_version_name(self, base_name: str) -> str:
-        """Return the next unused ``<base_name>_vN`` suffix for versioning.
-
-        Lists existing collections and picks the smallest ``N >= 2`` for
-        which ``<base_name>_vN`` is free. Used by :meth:`create_index`
-        when ``if_exists="version"``.
-
-        Args:
-            base_name: Already-sanitized base collection name.
-
-        Returns:
-            A collection name of the form ``<base_name>_vN`` that is
-            guaranteed not to collide with an existing collection at the
-            time of the call.
-        """
-        existing = {c.name for c in self.client.get_collections().collections}
-        n = 2
-        while f"{base_name}_v{n}" in existing:
-            n += 1
-        return f"{base_name}_v{n}"
 
     def search(self, query_text: str, index_name: str, top_k: int = 5) -> List[Dict]:
         """Dense cosine search against a single chunking-method collection.
@@ -288,8 +261,9 @@ if __name__ == "__main__":
         with open(file_path, "r", encoding="utf-8") as f:
             chunks = json.load(f)
 
-        print(f"Indexing {method} with {len(chunks)} chunks...")
-        qdrant.create_index(chunks, index_name=method)
+        coll_name = COLLECTION_NAMES.get(method, method)
+        print(f"Indexing {method} → collection '{coll_name}' with {len(chunks)} chunks...")
+        qdrant.create_index(chunks, index_name=coll_name)
 
     print("\nAll collections created. Available collections:")
     print(qdrant.list_collections())

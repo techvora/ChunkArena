@@ -17,7 +17,7 @@ from collections import defaultdict
 
 import numpy as np
 
-from chunkarena.config import HYBRID_CAND_K
+from chunkarena.config import HYBRID_CAND_K, COLLECTION_NAMES
 from .models import client, cross_encoder
 from .chunk_store import (
     all_chunks_cache,
@@ -56,7 +56,8 @@ def dense_search(query_text: str, query_emb: np.ndarray,
     key = ("dense", method, query_text, top_k)
     if key in retrieval_cache:
         return retrieval_cache[key]
-    res   = client.query_points(collection_name=method,
+    coll  = COLLECTION_NAMES.get(method, method)
+    res   = client.query_points(collection_name=coll,
                                 query=query_emb.tolist(), limit=top_k)
     ids   = [r.id for r in res.points]
     texts = [all_chunks_text_dict[method][i] for i in ids]

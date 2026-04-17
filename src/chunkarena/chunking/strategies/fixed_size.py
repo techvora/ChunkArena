@@ -13,7 +13,8 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from ..base import reconstruct_text_and_metadata, find_metadata_for_chunk
 
 
-def fixed_size_chunk(units: List[Dict], chunk_size: int, overlap: int) -> List[Dict]:
+def fixed_size_chunk(units: List[Dict], chunk_size: int, overlap: int,
+                     prefix: str = "fixed") -> List[Dict]:
     """Split the document into character-budgeted chunks.
 
     Uses ``RecursiveCharacterTextSplitter`` with a simple separator ladder
@@ -29,6 +30,7 @@ def fixed_size_chunk(units: List[Dict], chunk_size: int, overlap: int) -> List[D
         chunk_size: Maximum character length of an emitted chunk.
         overlap: Characters of overlap between consecutive chunks; set to
             zero for strict non-overlapping fixed-size chunking.
+        prefix: Chunk id prefix (e.g. ``"fixed"`` or ``"overlap"``).
 
     Returns:
         List of chunk dicts with ``chunk_id``, ``text`` and the
@@ -45,7 +47,7 @@ def fixed_size_chunk(units: List[Dict], chunk_size: int, overlap: int) -> List[D
     for i, chunk_text in enumerate(chunks):
         chunk_meta = find_metadata_for_chunk(chunk_text, text, metadata_map)
         result.append({
-            "chunk_id": f"fixed_{i}",
+            "chunk_id": f"{prefix}_{i}",
             "text": chunk_text,
             "metadata": chunk_meta
         })

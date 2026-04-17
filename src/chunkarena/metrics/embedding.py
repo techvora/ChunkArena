@@ -14,7 +14,7 @@ techniques.
 import numpy as np
 from sentence_transformers import SentenceTransformer
 
-from chunkarena.config import DEVICE, EMBEDDING_MODEL
+from chunkarena.config import DEVICE, EMBEDDING_MODEL, EMBEDDING_NORMALIZE
 
 
 device = DEVICE
@@ -42,5 +42,8 @@ def get_embedding(text: str) -> np.ndarray:
         1-D numpy array of the normalized (when configured) embedding.
     """
     if text not in embedding_cache:
-        embedding_cache[text] = embedder.encode([text], convert_to_numpy=True)[0]
+        embedding_cache[text] = embedder.encode(
+            [text], convert_to_numpy=True,
+            normalize_embeddings=EMBEDDING_NORMALIZE,
+        )[0]
     return embedding_cache[text]

@@ -30,7 +30,7 @@ def main():
         if method == "fixed_size":
             chunks = chunk_normalized_documents(units, method, chunk_size=CHUNK_SIZE, overlap=0)
         elif method == "overlapping":
-            chunks = chunk_normalized_documents(units, method, chunk_size=CHUNK_SIZE, overlap=OVERLAP)
+            chunks = chunk_normalized_documents(units, method, chunk_size=CHUNK_SIZE, overlap=OVERLAP, prefix="overlap")
         elif method == "sentence":
             chunks = chunk_normalized_documents(units, method, sentences_per_chunk=SENTENCES_PER_CHUNK)
         elif method == "recursive":

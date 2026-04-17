@@ -15,7 +15,7 @@ import re
 
 from rank_bm25 import BM25Okapi
 
-from chunkarena.config import CHUNK_METHODS
+from chunkarena.config import CHUNK_METHODS, COLLECTION_NAMES
 from .models import client
 
 
@@ -74,7 +74,8 @@ def build_all_stores():
     """
     print("Loading collections and building BM25 indexes...")
     for method in CHUNK_METHODS:
-        ids, texts = get_all_chunks(method)
+        coll = COLLECTION_NAMES.get(method, method)
+        ids, texts = get_all_chunks(coll)
         all_chunks_cache[method]     = (ids, texts)
         all_chunks_text_dict[method] = dict(zip(ids, texts))
         tokenized = [word_re.findall(t.lower()) for t in texts]

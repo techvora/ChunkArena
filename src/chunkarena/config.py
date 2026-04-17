@@ -70,26 +70,42 @@ QDRANT_PORT = int(os.getenv("CHUNKARENA_QDRANT_PORT", "6333"))
 # ------------------------------------------------------------
 # Stage 1 — Extraction (raw → bronze)
 # ------------------------------------------------------------
-SOURCE_FILE = str(DATA_DIR / "raw" / "Banking_system.pdf")
+SOURCE_FILE = str(DATA_DIR / "raw" / "Central_banks.pdf")
 EXTRACTED_DATA_OUTPUT_DIR = str(DATA_DIR / "bronze" / "extracted")
 
 # ------------------------------------------------------------
 # Stage 2 — Normalization (bronze → silver)
 # ------------------------------------------------------------
-NORMALIZED_FILE = str(DATA_DIR / "silver" / "normalized" / "Banking_system_normalized.json")
+NORMALIZED_FILE = str(DATA_DIR / "silver" / "normalized" / "Central_banks.json")
 
 # ------------------------------------------------------------
 # Stage 3 — Chunking (silver → gold)
 # ------------------------------------------------------------
-CHUNK_OUTPUT_DIR = str(DATA_DIR / "gold" / "chunks" / "banking_system")
+CHUNK_OUTPUT_DIR = str(DATA_DIR / "gold" / "chunks" / "Central_banks")
 
 # ------------------------------------------------------------
 # Stage 4 — Indexing (gold chunks → Qdrant)
 # ------------------------------------------------------------
 CHUNKS_PATH = CHUNK_OUTPUT_DIR
 
+# ---- Qdrant collection names for create new collection and use in evaluation ----
+
+_COLLECTION_DEFAULTS = {
+    "fixed_size":  "fixed_size_v4",
+    "overlapping": "overlapping_v4",
+    "sentence":    "sentence_v4",
+    "paragraph":   "paragraph_v4",
+    "recursive":   "recursive_v4",
+    "header":      "header_v4",
+    "semantic":    "semantic_v4",
+}
+COLLECTION_NAMES = {
+    method: os.getenv(f"CHUNKARENA_COLL_{method.upper()}", default)
+    for method, default in _COLLECTION_DEFAULTS.items()
+}
+
 CHUNK_SIZE = 1000
-OVERLAP = 200
+OVERLAP = 300
 SENTENCES_PER_CHUNK = 3
 
 # Tokenizer used for the token_cost metric. cl100k_base is the encoding
@@ -117,7 +133,13 @@ METHOD_PARAMS = {
 # ------------------------------------------------------------
 # Stage 5 — Evaluation pipeline
 # ------------------------------------------------------------
-CSV_PATH = str(DATA_DIR / "gold" / "golden_dataset" / "Banking_system.csv")
+GOLDEN_DATASET_DIR = DATA_DIR / "gold" / "golden_dataset"
+# Accepts .csv or .xlsx — the data_loader auto-detects the format.
+# Override via env var CHUNKARENA_GOLDEN_DATASET (filename only, e.g. "Central_banks.xlsx").
+_golden_file = os.getenv("CHUNKARENA_GOLDEN_DATASET", "Central_banks.xlsx")
+GOLDEN_DATASET_PATH = str(GOLDEN_DATASET_DIR / _golden_file)
+# Backward compat alias
+CSV_PATH = GOLDEN_DATASET_PATH
 
 FINAL_K = 5
 RETRIEVAL_K = 50
@@ -176,7 +198,7 @@ THRESHOLDS = {
 RESULTS_DIR = DATA_DIR / "results" / "current"
 RESULTS_DIR.mkdir(parents=True, exist_ok=True)
 
-RAW_RESULTS_CSV = str(RESULTS_DIR / "raw_results.csv")
-CHUNK_STATS_CSV = str(RESULTS_DIR / "chunk_stats.csv")
-SUMMARY_CSV = str(RESULTS_DIR / "summary.csv")
-BENCHMARK_XLSX = str(RESULTS_DIR / "benchmark_report.xlsx")
+# Include the golden dataset name in the report filename so results
+# are traceable, e.g. "benchmark_report_Banking_system.xlsx"
+_golden_stem = Path(_golden_file).stem
+BENCHMARK_XLSX = str(RESULTS_DIR / f"benchmark_report_{_golden_stem}.xlsx")

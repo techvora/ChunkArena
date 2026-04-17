@@ -1,39 +1,80 @@
 """Golden dataset loader.
 
-Reads the CSV at CSV_PATH and returns a list of question dictionaries
-with a stable integer id, the question text, the gold spans split on
-semicolons, and a gold answer text used by the RAG-quality proxies.
-If the CSV has an Answer column it is used as-is; otherwise the joined
-gold spans serve as the answer.
+Reads the golden dataset file (CSV or Excel) at GOLDEN_DATASET_PATH and
+returns a list of question dictionaries with a stable integer id, the
+question text, the gold spans split on semicolons, and a gold answer
+text used by the RAG-quality proxies.
 """
 
 import pandas as pd
+from pathlib import Path
 
-from chunkarena.config import CSV_PATH
+from chunkarena.config import GOLDEN_DATASET_PATH
+
+
+def _read_golden_file(path: str) -> pd.DataFrame:
+    """Read a golden dataset file, auto-detecting CSV or Excel format.
+
+    Args:
+        path: File path ending in .csv, .xlsx, or .xls.
+
+    Returns:
+        A pandas DataFrame with the golden dataset rows.
+
+    Raises:
+        ValueError: If the file extension is not supported.
+    """
+    ext = Path(path).suffix.lower()
+    if ext == ".csv":
+        return pd.read_csv(path)
+    elif ext in (".xlsx", ".xls"):
+        return pd.read_excel(path, engine="openpyxl")
+    else:
+        raise ValueError(
+            f"Unsupported golden dataset format '{ext}'. Use .csv or .xlsx"
+        )
 
 
 def load_questions():
-    """Load the golden-dataset CSV into the runner's in-memory format.
+    """Load the golden dataset into the runner's in-memory format.
 
-    Reads :data:`config.CSV_PATH`, splits each row's ``Gold_spans`` field
-    on semicolons (stripping whitespace and dropping empties) to recover
-    the list of gold relevance strings, and takes ``Answer`` as the gold
-    answer when present; otherwise it joins the gold spans to synthesise
-    one. Each returned record receives a fresh zero-based ``id`` so the
-    runner can use it as a stable index across method/technique cells.
+    Reads :data:`config.GOLDEN_DATASET_PATH` (CSV or Excel), splits each
+    row's ``Facts`` / ``Gold_spans`` field on semicolons to recover the
+    list of gold relevance strings, and takes ``Golden Answer`` /
+    ``Answer`` / ``Gold_text`` as the gold answer when present; otherwise
+    joins the gold spans to synthesise one.
 
     Returns:
         List of dicts with keys ``id`` (int), ``question`` (str),
         ``gold_spans`` (list[str]) and ``gold_answer`` (str).
     """
-    print("Loading gold dataset...")
-    gold_df = pd.read_csv(CSV_PATH)
-    has_answer = "Answer" in gold_df.columns
+    print(f"Loading gold dataset from {GOLDEN_DATASET_PATH}...")
+    gold_df = _read_golden_file(GOLDEN_DATASET_PATH)
+
+    # Support multiple answer column names
+    answer_col = None
+    for col in ("Golden Answer", "Answer", "Gold_text"):
+        if col in gold_df.columns:
+            answer_col = col
+            break
+
+    # Support multiple spans column names
+    spans_col = None
+    for col in ("Facts", "Gold_spans"):
+        if col in gold_df.columns:
+            spans_col = col
+            break
+    if spans_col is None:
+        raise KeyError(
+            f"Golden dataset must have a 'Facts' or 'Gold_spans' column. "
+            f"Found columns: {list(gold_df.columns)}"
+        )
+
     questions_data = []
     for _, row in gold_df.iterrows():
-        gold_spans = [s.strip() for s in str(row["Gold_spans"]).split(";") if s.strip()]
-        if has_answer and pd.notna(row["Answer"]):
-            gold_answer = str(row["Answer"]).strip()
+        gold_spans = [s.strip() for s in str(row[spans_col]).split(";") if s.strip()]
+        if answer_col and pd.notna(row[answer_col]):
+            gold_answer = str(row[answer_col]).strip()
         else:
             gold_answer = " ".join(gold_spans)
         questions_data.append({

@@ -9,13 +9,11 @@ Orchestrates the full benchmark:
        score every metric.
     5. Aggregate to a per-(method, technique) summary, add a composite
        score and per-metric verdicts.
-    6. Run pairwise paired t-tests per technique on nDCG.
-    7. Build the 8-sheet Excel report.
-    8. Write raw_results.csv, chunk_stats.csv, summary.csv.
+    6. Build the consolidated Excel report (single output artifact).
 
-Logic is unchanged from the original single-file evaluate.py; the only
-difference is that metrics, retrieval, chunk stats and the Excel builder
-are imported from their respective packages.
+All results are written to a single benchmark_report.xlsx file with
+three sheets: Experiment Matrix (with chunk stats), Raw Results, and
+Heatmap (all techniques sorted by composite score).
 """
 
 import time
@@ -26,7 +24,6 @@ from tqdm import tqdm
 from chunkarena.config import (
     CHUNK_METHODS, FINAL_K, RETRIEVAL_K, SOFT_THRESHOLD,
     COMPOSITE_WEIGHTS, METHOD_PARAMS,
-    RAW_RESULTS_CSV, CHUNK_STATS_CSV, SUMMARY_CSV,
 )
 from chunkarena.metrics import (
     get_embedding, hit_at_k, mrr_score, precision_at_k, ndcg_at_k,
@@ -45,7 +42,7 @@ warnings.filterwarnings("ignore")
 
 
 def run():
-    """Execute the end-to-end benchmark and write every output artifact.
+    """Execute the end-to-end benchmark and write the consolidated Excel report.
 
     Loads the golden dataset and every Qdrant collection, computes
     per-collection chunk stats, then iterates over every
@@ -54,11 +51,9 @@ def run():
     suite (hit, MRR, precision, nDCG, recall, avg rank, redundancy,
     boundary, token cost, context relevance, faithfulness, answer
     correctness). Aggregates to a per-``(method, technique)`` summary,
-    adds a composite score and threshold verdicts, writes raw/summary/
-    stats CSVs, and finally hands everything to the Excel report
-    builder. Latency is accounted honestly: hybrid latency adds the
-    dense portion back in because the dense call is served from cache
-    inside ``hybrid_search``.
+    adds a composite score and threshold verdicts, then hands everything
+    to the Excel report builder which writes a single
+    ``benchmark_report.xlsx``.
     """
     print(f"SOFT_THRESHOLD   = {SOFT_THRESHOLD}")
     print(f"COMPOSITE_WEIGHTS = {COMPOSITE_WEIGHTS}")
@@ -136,7 +131,6 @@ def run():
                 cr  = context_relevance(query, texts)
                 fa  = faithfulness(texts, gold_answer)
                 ac  = answer_correctness(texts, gold_spans)
-                miss = 1 if pd.isna(ar) else 0
 
                 raw_results.append({
                     "method"            : method,
@@ -149,9 +143,7 @@ def run():
                     "ndcg@k"            : round(n,  4),
                     "recall@k"          : round(rc, 4),
                     "avg_rank"          : ar,
-                    "miss"              : miss,
                     "redundancy"        : rd,
-                    "diversity"         : round(1 - rd, 4),
                     "boundary"          : b,
                     "token_cost"        : tc,
                     "latency_ms"        : round(latency_ms, 3),
@@ -161,9 +153,6 @@ def run():
                 })
 
     raw_df = pd.DataFrame(raw_results)
-    raw_df.to_csv(RAW_RESULTS_CSV, index=False)
-    stats_df.to_csv(CHUNK_STATS_CSV, index=False)
-    print("\nRaw results saved.")
 
     # ============================================================
     # SUMMARY - aggregate per (method, technique)
@@ -175,9 +164,7 @@ def run():
         ndcg_at_k       = ("ndcg@k",      "mean"),
         recall_at_k     = ("recall@k",    "mean"),
         avg_rank        = ("avg_rank",    "mean"),
-        miss_rate       = ("miss",        "mean"),
         redundancy      = ("redundancy",  "mean"),
-        diversity       = ("diversity",   "mean"),
         boundary        = ("boundary",    "mean"),
         avg_token_cost  = ("token_cost",  "mean"),
         avg_latency_ms  = ("latency_ms",  "mean"),
@@ -186,8 +173,6 @@ def run():
         answer_correctness = ("answer_correctness", "mean"),
         n_questions     = ("question_id", "count"),
     ).round(4).reset_index()
-
-    summary_df["answer_rate"] = (1 - summary_df["miss_rate"]).round(4)
 
     summary_df["composite_score"] = sum(
         summary_df[m] * w for m, w in COMPOSITE_WEIGHTS.items()
@@ -198,13 +183,11 @@ def run():
     ).reset_index(drop=True)
     summary_df["rank"] = summary_df.index + 1
 
-    for metric in ["hit_at_k", "mrr", "ndcg_at_k", "recall_at_k",
-                   "redundancy", "composite_score"]:
+    for metric in ["hit_at_k", "mrr", "precision_at_k", "ndcg_at_k",
+                   "recall_at_k", "redundancy", "composite_score"]:
         summary_df[f"{metric}_verdict"] = summary_df[metric].apply(
             lambda v: threshold_verdict(metric, v)
         )
-
-    summary_df.to_csv(SUMMARY_CSV, index=False)
 
     overall_best = summary_df.iloc[0]
     print(f"\n{'='*60}")
@@ -213,7 +196,6 @@ def run():
     print(f"  nDCG@{FINAL_K}      : {overall_best['ndcg_at_k']}")
     print(f"  MRR         : {overall_best['mrr']}")
     print(f"  Hit@{FINAL_K}       : {overall_best['hit_at_k']}")
-    print(f"  Miss rate   : {overall_best['miss_rate']:.1%}")
     print(f"  Redundancy  : {overall_best['redundancy']} (mean pairwise similarity)")
     print(f"{'='*60}")
 
@@ -223,15 +205,12 @@ def run():
     build_workbook(
         summary_df=summary_df,
         raw_df=raw_df,
+        stats_df=stats_df,
         final_k=FINAL_K,
         method_params=METHOD_PARAMS,
     )
 
-    print("\nAll outputs:")
-    print(f"   {RAW_RESULTS_CSV}       per-question scores (with miss column)")
-    print(f"   {CHUNK_STATS_CSV}       chunk quality per method")
-    print(f"   {SUMMARY_CSV}           aggregated scores + verdicts ranked")
-    print("   benchmark_report.xlsx  8-sheet formatted report\n")
+    print("\nAll outputs consolidated into benchmark_report.xlsx")
     print("Key design choices:")
     print(f"  - SOFT_THRESHOLD      : {SOFT_THRESHOLD} (semantic relevance)")
     print(f"  - Redundancy          : mean pairwise cosine similarity (standard)")
