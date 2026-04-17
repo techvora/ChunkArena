@@ -46,7 +46,7 @@ def _resolve_device(pref: str) -> str:
     except Exception:
         return "cpu"
 
-DEVICE = _resolve_device(os.getenv("CHUNKARENA_DEVICE", "auto"))
+DEVICE = _resolve_device(os.getenv("CHUNKARENA_DEVICE", "cpu"))
 
 # ---- Embedding model (dense retrieval + semantic chunking + metrics) ----
 # Single source of truth. Swap this string to change the embedder everywhere.
@@ -92,7 +92,7 @@ CHUNKS_PATH = CHUNK_OUTPUT_DIR
 # Derived automatically: {dataset}_{method_prefix}_v{version}
 # e.g. "central_banks_fixed_v1", "central_banks_semantic_v1"
 
-COLLECTION_VERSION = int(os.getenv("CHUNKARENA_COLL_VERSION", "1"))
+COLLECTION_VERSION = int(os.getenv("CHUNKARENA_COLL_VERSION", "3"))
 
 _DATASET_NAME = Path(SOURCE_FILE).stem.lower()
 
